@@ -1,8 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import Header from './Header';
 import Scheduled from './Scheduled';
 import Past from './Past';
 import Requests from './Requests';
 
+const Info = props => {
+	return(
+		<React.Fragment>
+		  console.log('Hola')
+
+      <Header/>
+		  <Scheduled/>
+      <Past/>
+      <Requests/>
+		</React.Fragment>
+
+	);
+}
+
+Info.propTypes = {
+
+}
 export default Info;

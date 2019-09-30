@@ -1,5 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
+const Delete = props => {
+	return(
+		<React.Fragment>
 
-export default delete;
+		</React.Fragment>
+
+	);
+}
+
+Delete.propTypes = {
+
+}
+
+export default Delete;

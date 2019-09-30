@@ -1,11 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import Profile from './Profile';
 import Error from './Error';
 
 const Login = props => {
 	return(
-		console.log('Hola')
+		<React.Fragment>
+		  console.log('Hola')
+
+      <Profile/>
+		  <Error/>
+		</React.Fragment>
+
 	);
 }
 
