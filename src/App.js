@@ -13,7 +13,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-				<Login />
+        <header>
+          <h1>neboola</h1>
+        </header>
+        <main>
+
+          <Login />
+        </main>
       </div>
     );
   }

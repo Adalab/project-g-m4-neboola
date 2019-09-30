@@ -6,7 +6,6 @@ import Delete from './Delete';
 const Requests = props => {
 	return(
 		<React.Fragment>
-		  console.log('Hola')
       <Collapsables/>
       <Delete/>
 		</React.Fragment>

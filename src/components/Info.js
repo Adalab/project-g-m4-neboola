@@ -8,7 +8,6 @@ import Requests from './Requests';
 const Info = props => {
 	return(
 		<React.Fragment>
-		  console.log('Hola')
 
       <Header/>
 		  <Scheduled/>

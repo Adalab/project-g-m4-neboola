@@ -8,7 +8,7 @@ import Error from './Error';
 const NewRequest = props => {
 	return(
 		<React.Fragment>
-		  console.log('Hola')
+		  
       <Header/>
       <Date/>
       <Calendar/>

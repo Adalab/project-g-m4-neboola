@@ -6,8 +6,12 @@ import Error from './Error';
 const Login = props => {
 	return(
 		<React.Fragment>
-		  console.log('Hola')
-
+		  <h2 className="">Vacaioonero</h2>
+      <label htmlFor="">
+      <input type="mail" className=""/>
+      </label>
+      <submit className=""></submit>
+      
       <Profile/>
 		  <Error/>
 		</React.Fragment>
