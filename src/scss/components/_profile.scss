@@ -20,6 +20,7 @@
 .prof_container {
   position: relative;
   background-image: linear-gradient(297deg, $blue-light-midtone, $blue-dark-midtone);
+  padding-bottom: 32px;
 }
 // .prof_img {
 
@@ -41,11 +42,26 @@
   color: $color-light;
   font-size: 18px;
 }
-// .info_conatiner-nav
+.info_container-nav {
+  display: flex;
+  justify-content: space-around;
+}
 .link {
   text-decoration: none;
 }
 // .info_link
-// .prof-info_container
-// .prof_number
-// .prof_text
+.prof-info_container {
+  border: 1px solid $blue-dark;
+  border-radius: 22.5px;
+  width: 149px;
+  height: 172px;
+  margin-top: 32px;
+}
+.prof_number {
+  font-size: 36px;
+  color: $color-dark;
+}
+.prof_text {
+  color: $color-dark;
+  font-size: 13px;
+}

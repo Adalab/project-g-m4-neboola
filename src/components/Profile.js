@@ -19,7 +19,7 @@ const Profile = props => {
             Request free time
           </Link>
         </div>
-        <div className="info_conatiner-nav">
+        <div className="info_container-nav">
           <Link to="/info" className="link info_link">
             <div className="prof-info_container">
               {/*<i></i> */}
