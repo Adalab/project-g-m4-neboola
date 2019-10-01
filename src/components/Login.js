@@ -20,7 +20,8 @@ const Login = props => {
           <input type="email" className="input_mail" 
             name="input_mail"
 						onChange={getEmail}
-						value={email}/>
+						value={email}
+            placeholder="Email"/>
         </label>
         </form>
 	       <Link to={email.toLowerCase().includes(domain.toLowerCase()) 

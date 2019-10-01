@@ -17,8 +17,22 @@ class App extends React.Component {
 		}
 
 		this.getEmail = this.getEmail.bind(this);
-		this.getFetch = this.getFetch.bind(this);
+    this.getFetch = this.getFetch.bind(this);
+    this.getUser = this.getUser.bind(this);
+    this.deleteLS = this.deleteLS.bind(this);
+  }
+  componentDidMount(){
+    this.getUser()
+  }
 
+  getUser(){
+    const ls = JSON.parse(localStorage.getItem('User'));
+    if(ls !== null){
+      this.setState({
+        email: ls.email,
+        data:ls.data
+      })
+    }
   }
 
  handleCollapsable(event) {
@@ -40,7 +54,7 @@ class App extends React.Component {
 		const newEmail = event.currentTarget.value;
 		this.setState({
 			email: newEmail
-		});
+		},() => {localStorage.setItem('User', JSON.stringify(this.state))});
 	}
 
 	getFetch() {
@@ -48,12 +62,27 @@ class App extends React.Component {
 		console.log(ENDPOINT + this.state.email);
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
-		.then(data => console.log(data))
-		.catch(error => { console.log(error)});
-	}
+    .then(data =>  
+      this.setState({
+      data: data
+    },
+    () => {
+      localStorage.setItem('User', JSON.stringify(this.state))
+    }
+    
+    ))
+    .catch(error => { console.log(error)});
+  }
+  deleteLS() {
+    localStorage.removeItem('User');
+    this.setState({
+      data: {},
+      email: ''
+    })
+  }
 
   render() {
-		const {email} = this.state;
+		const {email, data} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -72,10 +101,11 @@ class App extends React.Component {
 						() => {
 							return (
 							<Profile 
-								getEmail = {this.getEmail}
-								email = {email}
-								getFetch = {this.getFetch}
-								
+                getEmail = {this.getEmail}
+                getFetch = {this.getFetch}
+                email = {email}
+                data={data}
+                deleteLS={this.deleteLS}
 							/>
 							)
 						}} 
