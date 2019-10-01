@@ -12,12 +12,28 @@ class App extends React.Component {
 
 		this.state = {
 			data: {},
-			email: ''
+			email: '',
+			collapsaibleId: 'col-1'
 		}
 
 		this.getEmail = this.getEmail.bind(this);
 		this.getFetch = this.getFetch.bind(this);
 
+  }
+
+ handleCollapsable(event) {
+    const newCollapsablesId = event.currentTarget.getAttribute('data-id');
+    this.setState(prevState => {
+      if (newCollapsablesId === prevState.collapsablesId) {
+        return {
+          collapsablesId: null
+        }
+      } else {
+        return {
+          collapsablesId: newCollapsablesId
+        }
+      }
+    })
   }
 	
 	getEmail(event) {
@@ -59,6 +75,7 @@ class App extends React.Component {
 								getEmail = {this.getEmail}
 								email = {email}
 								getFetch = {this.getFetch}
+								
 							/>
 							)
 						}} 
@@ -70,6 +87,7 @@ class App extends React.Component {
 							return(
 							<Info 
 								email = {email}
+								handleCollapsable={this.handleCollapsable}
 							/>
 						);
 						}

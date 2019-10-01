@@ -43,6 +43,6 @@ const Profile = props => {
 }
 
 Profile.propTypes = {
- email: PropTypes.string.isRequired
+ email: PropTypes.string.isRequired,
 }
 export default Profile;
