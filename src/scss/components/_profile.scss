@@ -5,6 +5,8 @@
   z-index: 1;
   display: flex;
   margin-top: 18px;
+  width: 100vw;
+  justify-content: space-between;
 }
 .prof_title {
   background-image: url(../../images/logo.svg);
@@ -18,7 +20,7 @@
 }
 .prof_logout-icon {
   color: $color-light;
-  margin-left: 200px;
+  // margin-left: 200px;
 }
 // .prof_main {
 
