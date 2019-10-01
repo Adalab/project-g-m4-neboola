@@ -15,15 +15,29 @@ class App extends React.Component {
 		}
 
 		this.getEmail = this.getEmail.bind(this);
-		this.getFetch = this.getFetch.bind(this);
+    this.getFetch = this.getFetch.bind(this);
+    this.getUser = this.getUser.bind(this);
 
+  }
+  componentDidMount(){
+    this.getUser()
+  }
+
+  getUser(){
+    const ls = JSON.parse(localStorage.getItem('User'));
+    if(ls !== null){
+      this.setState({
+        email: ls.email,
+        data:ls.data
+      })
+    }
   }
 	
 	getEmail(event) {
 		const newEmail = event.currentTarget.value;
 		this.setState({
 			email: newEmail
-		});
+		},() => {localStorage.setItem('User', JSON.stringify(this.state))});
 	}
 
 	getFetch() {
@@ -34,7 +48,12 @@ class App extends React.Component {
     .then(data =>  
       this.setState({
       data: data
-    }))
+    },
+    () => {
+      localStorage.setItem('User', JSON.stringify(this.state))
+    }
+    
+    ))
     .catch(error => { console.log(error)});
   }
 
