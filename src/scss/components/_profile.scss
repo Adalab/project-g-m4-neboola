@@ -1,3 +1,7 @@
+.profile_container {
+  min-height: 100vh;
+  min-width: 308px;
+}
 .prof_header {
   position: absolute;
   top: 0px;
@@ -7,6 +11,7 @@
   margin-top: 18px;
   width: 100vw;
   justify-content: space-between;
+  min-width: 308px;
 }
 .prof_title {
   background-image: url(../../images/logo.svg);
@@ -56,9 +61,9 @@
   justify-content: center;
   align-items: center;
 }
-.newrequest_link_text {
+// .newrequest_link_text {
 
-}
+// }
 .info_container-nav {
   display: flex;
   justify-content: space-around;
@@ -84,8 +89,8 @@
   margin: 0 auto;
   margin-top: 24px;
 }
-.prof_icon {
-}
+// .prof_icon {
+// }
 .prof_number {
   font-size: 36px;
   color: $color-dark;

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Profile = props => {
   const {data} = props;
 	return(
-		<React.Fragment>
+		<div className="profile_container">
       <header className="prof_header">
         <h1 className="prof_title">Neboola</h1>
         <img src={logout} alt="Logout icon" className="prof_logout-icon"></img>
@@ -47,7 +47,7 @@ const Profile = props => {
           </Link>
         </div>
       </main>
-		</React.Fragment>
+		</div>
 
 	);
 }
