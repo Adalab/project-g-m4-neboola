@@ -15,16 +15,20 @@ const Login = props => {
 
       <main className="app_main">
 		    <h2 className="main_title">Vacacioonero</h2>
-        <label htmlFor="" className="label_login">
-          <input type="mail" className="input_mail" 
+        <form action="" className="form_login" id="login">
+        <label htmlFor="input_mail" className="label_login">
+          <input type="email" className="input_mail" 
+            name="input_mail"
 						onChange={getEmail}
 						value={email}/>
         </label>
-
+        </form>
         <Link to="/profile" className="profile_link">
-        <button type="submit" className="btn_login" onClick={getFetch}>
-					Enter
-				</button>
+         <input  type="submit" className="btn_login"  
+            form="login"
+            value="Enter"
+            onClick={getFetch}
+          />
         </Link>
 
 		    <Error/>
