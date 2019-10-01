@@ -8,18 +8,36 @@ import './scss/App.scss';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      user:'',
-			email: '',
-    }
-		this.getEmail = this.getEmail.bind(this);
-  }
 
+		this.state = {
+			data: {},
+			email: ''
+		}
+
+		this.getEmail = this.getEmail.bind(this);
+		this.getFetch = this.getFetch.bind(this);
+
+  }
+	
 	getEmail(event) {
 		const newEmail = event.currentTarget.value;
 		this.setState({
 			email: newEmail
-		})
+		});
+	}
+
+/* 	componentDidMount() {
+		this.getFetch();
+	}
+ */
+
+	getFetch() {
+		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/users/';
+		console.log(ENDPOINT + this.state.email);
+		fetch(ENDPOINT + this.state.email)
+		.then(response =>response.json())
+		.then(data => console.log(data))
+		.catch(error => { console.log(error)});
 	}
 
   render() {
@@ -33,11 +51,21 @@ class App extends React.Component {
 								<Login 
 									getEmail = {this.getEmail}
 									email = {email}
+									getFetch = {this.getFetch}
 								/>
 							);
 						}}
 					/>
-          <Route exact path="/profile" component={ Profile } 
+          <Route exact path="/profile" render={
+						() => {
+							return (
+							<Profile 
+								getEmail = {this.getEmail}
+								email = {email}
+								getFetch = {this.getFetch}
+							/>
+							)
+						}} 
 					/>
           <Route exact path="/newRequest" component={ NewRequest } 
 					/>
