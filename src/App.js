@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './components/Login';
 import { Route, Switch } from 'react-router-dom';
 import Profile from './components/Profile';
+import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
 
@@ -67,7 +68,9 @@ class App extends React.Component {
 							)
 						}} 
 					/>
-          <Route exact path="/newRequest" component={ NewRequest } 
+          <Route exact path="/profile/new-request" component={ NewRequest } 
+					/>
+					<Route exact path="/profile/info" component={ Info } 
 					/>
         </Switch>
       </div>
