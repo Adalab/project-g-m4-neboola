@@ -10,8 +10,10 @@ const NewRequest = props => {
 		<React.Fragment>
 		  
       <Header/>
+      <h2 className="requests_time">Request free time</h2>
       <Date/>
       <Calendar/>
+      <input className="input-coment" type="text-area" placeholder="Coment"/>
       <Error/>
 		</React.Fragment>
 
