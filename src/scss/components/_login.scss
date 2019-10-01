@@ -6,28 +6,29 @@
   // justify-content: center;
   // align-items: center;
 }
-.app_header {
+// .app_header {
 
-}
+// }
 .header_title {
   background-image: url(../../images/logo.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   height: 1px;
   padding-top: 37.6px;
   overflow: hidden;
   margin: 0; 
 }
-.app_main {
+// .app_main {
 
-}
+// }
 .main_title {
   color: $color-light;
   
 }
-.label_login {
+// .label_login {
 
-}
+// }
 .input_mail {
   border-radius: 22px;
   width: 308px;
@@ -35,6 +36,13 @@
   border: none;
   margin-bottom: 17px;
   margin-top: 32px;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding-left: 25px;
+}
+.input_mail::placeholder { 
+  color: $color-dark;
+  font-size: 18px;
 }
 .profile_link {
   text-decoration: none;

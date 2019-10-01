@@ -10,7 +10,7 @@ const Login = props => {
 	return(
 		<div className="login_container">
       <header className="app_header">
-          <h1 className="header_title">n</h1>
+          <h1 className="header_title">neboola</h1>
         </header>
 
       <main className="app_main">
@@ -20,7 +20,8 @@ const Login = props => {
           <input type="email" className="input_mail" 
             name="input_mail"
 						onChange={getEmail}
-						value={email}/>
+						value={email}
+            placeholder="Email"/>
         </label>
         </form>
         <Link to="/profile" className="profile_link">

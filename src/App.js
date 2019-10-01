@@ -17,7 +17,7 @@ class App extends React.Component {
 		this.getEmail = this.getEmail.bind(this);
     this.getFetch = this.getFetch.bind(this);
     this.getUser = this.getUser.bind(this);
-
+    this.deleteLS = this.deleteLS.bind(this);
   }
   componentDidMount(){
     this.getUser()
@@ -56,6 +56,13 @@ class App extends React.Component {
     ))
     .catch(error => { console.log(error)});
   }
+  deleteLS() {
+    localStorage.removeItem('User');
+    this.setState({
+      data: {},
+      email: ''
+    })
+  }
 
   render() {
 		const {email, data} = this.state;
@@ -81,6 +88,7 @@ class App extends React.Component {
                 getFetch = {this.getFetch}
                 email = {email}
                 data={data}
+                deleteLS={this.deleteLS}
 							/>
 							)
 						}} 
