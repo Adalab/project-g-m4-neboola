@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
 import Login from './components/Login';
 import { Route, Switch } from 'react-router-dom';
 import Profile from './components/Profile';
 import NewRequest from './components/NewRequest';
+import './scss/App.scss';
 
 class App extends React.Component {
   constructor(props) {

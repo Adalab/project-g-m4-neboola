@@ -14,8 +14,9 @@ const NewRequest = props => {
       <Date/>
       <Calendar/>
       <label htmlFor="" className="label_textarea">
-      <textarea className="input-coment" type="text-area" placeholder="Coment"/>
+      <textarea className="input-coment" type="text-area" placeholder="Comment"/>
       </label>
+      <button className="btn_request">Request holidays</button>
       <Error/>
 		</React.Fragment>
 

@@ -1,0 +1,53 @@
+.login_container {
+  background-image: linear-gradient(352deg, $blue-light-midtone, $blue-dark-midtone);
+  min-height: 100vh;
+  padding-top: 40px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+.app_header {
+
+}
+.header_title {
+  background-image: url(../../images/logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 1px;
+  padding-top: 37.6px;
+  overflow: hidden;
+  margin: 0; 
+}
+.app_main {
+
+}
+.main_title {
+  color: $color-light;
+  
+}
+.label_login {
+
+}
+.input_mail {
+  border-radius: 22px;
+  width: 308px;
+  height: 45px;
+  border: none;
+  margin-bottom: 17px;
+  margin-top: 32px;
+}
+.profile_link {
+  text-decoration: none;
+
+}
+.btn_login {
+  display: block;
+  border-radius: 22px;
+  width: 308px;
+  height: 45px;
+  background-color: $blue-dark;
+  border: none;
+  margin: 0 auto;
+  color: $color-light;
+  font-size: 18px;
+}
