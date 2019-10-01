@@ -1,0 +1,44 @@
+.prof_header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+// .prof_title {
+
+// }
+// .prof_main {
+
+// }
+.prof_container {
+  position: relative;
+  background-image: linear-gradient(297deg, $blue-light-midtone, $blue-dark-midtone);
+}
+// .prof_img {
+
+// }
+.prof_user-name {
+  color: $color-light;
+}
+.prof_mail {
+  color: $color-light;
+}
+.newrequest_link {
+  display: block;
+  border-radius: 22px;
+  width: 308px;
+  height: 45px;
+  background-color: $blue-dark;
+  border: none;
+  margin: 0 auto;
+  color: $color-light;
+  font-size: 18px;
+}
+// .info_conatiner-nav
+.link {
+  text-decoration: none;
+}
+// .info_link
+// .prof-info_container
+// .prof_number
+// .prof_text

@@ -15,7 +15,7 @@ const Profile = props => {
           <img src="" alt="" className="prof_img"/>
           <h2 className="prof_user-name">Judith Elliott</h2>
           <p className="prof_mail">judith@neboola.co</p>
-          <Link to="/newRequest" className="newrequest_link">
+          <Link to="/newRequest" className="newrequest_link link">
             Request free time
           </Link>
         </div>
