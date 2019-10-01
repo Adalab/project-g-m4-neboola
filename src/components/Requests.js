@@ -1,13 +1,12 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import Collapsables from './Collapsables';
-import Delete from './Delete';
+import CollapsiblesRequests from './CollapsiblesRequests';
 
 const Requests = props => {
 	return(
 		<React.Fragment>
-      <Collapsables/>
-      <Delete/>
+      <p className="requests_days">5 days requested</p>
+      <CollapsiblesRequests/>
 		</React.Fragment>
 
 	);

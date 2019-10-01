@@ -1,12 +1,12 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import Collapsables from './Collapsables';
+import Collapsibles from './Collapsibles';
 
 const Past = props => {
 	return(
 		<React.Fragment>
-      <Collapsables/>
-      
+      <p className="past_days">5 days past</p>
+      <Collapsibles/>
 		</React.Fragment>
 
 	);

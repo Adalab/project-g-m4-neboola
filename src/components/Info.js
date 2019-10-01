@@ -4,7 +4,7 @@ import Header from './Header';
 import Scheduled from './Scheduled';
 import Past from './Past';
 import Requests from './Requests';
-import { Link } from 'react-router-dom';
+
 
 const Info = props => {
 	return(
