@@ -14,25 +14,25 @@ const Profile = props => {
         <div className="prof_container">
           <img src="" alt="" className="prof_img"/>
           <h2 className="prof_user-name">Judith Elliott</h2>
-          <p className="prof_mail"></p>
+          <p className="prof_mail">judith@neboola.co</p>
           <Link to="/newRequest" className="newrequest_link">
             Request free time
           </Link>
         </div>
         <div className="info_conatiner-nav">
-          <Link to="/newRequest" className="link newrequest_link">
+          <Link to="/info" className="link info_link">
             <div className="prof-info_container">
               {/*<i></i> */}
-              <p className="prof_number"></p>
-              <p className="prof_text"></p>
+              <p className="prof_number">12</p>
+              <p className="prof_text">available days</p>
             </div>
           </Link>
           
-          <Link to="/newRequest" className="link newrequest_link">
+          <Link to="/info" className="link info_link">
             <div className="prof-info_container">
               {/*<i></i> */}
-              <p className="prof_number"></p>
-              <p className="prof_text"></p>
+              <p className="prof_number">4</p>
+              <p className="prof_text">scheduled days</p>
             </div>
           </Link>
         </div>

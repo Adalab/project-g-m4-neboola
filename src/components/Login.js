@@ -17,7 +17,7 @@ const Login = props => {
         </label>
 
         <Link to="/profile" className="profile_link">
-        <submit className="btn_login"></submit>
+        <button type="submit" className="btn_login">Enter</button>
         </Link>
 
 		    <Error/>
