@@ -8,7 +8,7 @@ const Header = props => {
       <div className="">
         <h1 className="">neboola</h1>
         <Link to="">
-        <i class="fas fa-sign-out-alt"></i>
+        
         </Link>
       </div>
 		</React.Fragment>
