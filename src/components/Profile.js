@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 //import Info from './Info';
 //import NewRequest from './NewRequest';
 import { Link } from 'react-router-dom';
@@ -43,6 +43,6 @@ const Profile = props => {
 }
 
 Profile.propTypes = {
-
+ email: PropTypes.string.isRequired
 }
 export default Profile;

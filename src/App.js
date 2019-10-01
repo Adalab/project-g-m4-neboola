@@ -27,11 +27,6 @@ class App extends React.Component {
 		});
 	}
 
-/* 	componentDidMount() {
-		this.getFetch();
-	}
- */
-
 	getFetch() {
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/users/';
 		console.log(ENDPOINT + this.state.email);
@@ -70,7 +65,15 @@ class App extends React.Component {
 					/>
           <Route exact path="/profile/new-request" component={ NewRequest } 
 					/>
-					<Route exact path="/profile/info" component={ Info } 
+					<Route exact path="/profile/info" render={
+						() => {
+							return(
+							<Info 
+								email = {email}
+							/>
+						);
+						}
+					}
 					/>
         </Switch>
       </div>
