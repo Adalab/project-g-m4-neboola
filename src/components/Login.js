@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Login = props => {
 	return(
-		<React.Fragment>
+		<div className="login_container">
       <header className="app_header">
-          <h1 className="header_title">neboola</h1>
+          <h1 className="header_title">n</h1>
         </header>
 
       <main className="app_main">
@@ -22,7 +22,7 @@ const Login = props => {
 
 		    <Error/>
       </main>
-		</React.Fragment>
+		</div>
 
 	);
 }
