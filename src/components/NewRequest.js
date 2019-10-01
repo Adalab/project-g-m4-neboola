@@ -13,7 +13,9 @@ const NewRequest = props => {
       <h2 className="requests_time">Request free time</h2>
       <Date/>
       <Calendar/>
+      <label htmlFor="" className="label_textarea">
       <textarea className="input-coment" type="text-area" placeholder="Coment"/>
+      </label>
       <Error/>
 		</React.Fragment>
 
