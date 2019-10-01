@@ -4,7 +4,9 @@ import Error from './Error';
 import { Link } from 'react-router-dom';
 
 const Login = props => {
-	const {email, getEmail} = props;
+
+	const {email, getEmail, getFetch} = props;
+
 	return(
 		<div className="login_container">
       <header className="app_header">
@@ -15,12 +17,12 @@ const Login = props => {
 		    <h2 className="main_title">Vacacioonero</h2>
         <label htmlFor="" className="label_login">
           <input type="mail" className="input_mail" 
-						onChange={getEmail} 
+						onChange={getEmail}
 						value={email}/>
         </label>
 
         <Link to="/profile" className="profile_link">
-        <button type="submit" className="btn_login">
+        <button type="submit" className="btn_login" onClick={getFetch}>
 					Enter
 				</button>
         </Link>
@@ -34,6 +36,7 @@ const Login = props => {
 
 Login.propTypes = {
 	getEmail: PropTypes.func.isRequired,
+	getFetch: PropTypes.func.isRequired,
 	email: PropTypes.string.isRequired
 }
 
