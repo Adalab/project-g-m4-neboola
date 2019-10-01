@@ -5,13 +5,18 @@ const Collapsibles = props => {
 	return(
 		<React.Fragment>
     <div className="collapsible_container">
-      <img src="" alt="" className="collapsible_icon" />
-      <div className="collapsible_content">
-        <p className="collapsible_date"></p>
-        <p className="collapsible_count"></p>
-      </div>
-      <img src="" alt="" className="collapsible_icon-arrow"/>
+
+    <div id="col-1" className={`collapsible_container ${collapsablesId === 'col-1' ? 'open' : '' }`}>
+          <img src="" alt="" className="collapsible_icon" />
+          <div className="collapsible_content"  data-id="col" onClick={handleCollapsable}>
+            <p className="collapsible_date"></p>
+            <p className="collapsible_count"></p>
+          </div>
+          <img src="" alt="" className="collapsible_icon-arrow"/>
     </div>
+
+     </div>
+
 		</React.Fragment>
 
 	);

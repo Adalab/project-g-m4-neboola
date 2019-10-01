@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './components/Login';
 import { Route, Switch } from 'react-router-dom';
 import Profile from './components/Profile';
+import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
 
@@ -11,7 +12,8 @@ class App extends React.Component {
 
 		this.state = {
 			data: {},
-      email: ''
+			email: '',
+			collapsaibleId: 'col-1'
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -31,6 +33,21 @@ class App extends React.Component {
         data:ls.data
       })
     }
+  }
+
+ handleCollapsable(event) {
+    const newCollapsablesId = event.currentTarget.getAttribute('data-id');
+    this.setState(prevState => {
+      if (newCollapsablesId === prevState.collapsablesId) {
+        return {
+          collapsablesId: null
+        }
+      } else {
+        return {
+          collapsablesId: newCollapsablesId
+        }
+      }
+    })
   }
 	
 	getEmail(event) {
@@ -93,7 +110,18 @@ class App extends React.Component {
 							)
 						}} 
 					/>
-          <Route exact path="/newRequest" component={ NewRequest } 
+          <Route exact path="/profile/new-request" component={ NewRequest } 
+					/>
+					<Route exact path="/profile/info" render={
+						() => {
+							return(
+							<Info 
+								email = {email}
+								handleCollapsable={this.handleCollapsable}
+							/>
+						);
+						}
+					}
 					/>
         </Switch>
       </div>

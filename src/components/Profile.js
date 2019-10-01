@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 //import Info from './Info';
 //import NewRequest from './NewRequest';
 import logout from './../images/logout.png';
@@ -23,12 +23,12 @@ const Profile = props => {
           <img src={profile} alt="" className="prof_img"/>
           <h2 className="prof_user-name">Judith Elliott</h2>
           <p className="prof_mail">{data.email}</p>
-          <Link to="/newRequest" className="link newrequest_link">
+          <Link to="/profile/new-request" className="link newrequest_link">
             <p className="newrequest_link_text">Request free time</p>
           </Link>
         </div>
         <div className="info_container-nav">
-          <Link to="/info" className="link info_link">
+          <Link to="/profile/info" className="link info_link">
             <div className="prof-info_container">
             <div className="prof_icon-container">
               <img className="prof_icon" src={umbrella} alt="Umbrella icon"></img>
@@ -38,7 +38,7 @@ const Profile = props => {
             </div>
           </Link>
           
-          <Link to="/info" className="link info_link">
+          <Link to="/profile/info" className="link info_link">
             <div className="prof-info_container">
               <div className="prof_icon-container">
                 <img className="prof_icon" src={check} alt="Check icon"></img>
@@ -55,6 +55,6 @@ const Profile = props => {
 }
 
 Profile.propTypes = {
-
+ email: PropTypes.string.isRequired,
 }
 export default Profile;

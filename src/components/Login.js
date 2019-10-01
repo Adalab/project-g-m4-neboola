@@ -4,7 +4,7 @@ import Error from './Error';
 import { Link } from 'react-router-dom';
 
 const Login = props => {
-
+	const domain = '@neboola.co';
 	const {email, getEmail, getFetch} = props;
 
 	return(
@@ -24,7 +24,9 @@ const Login = props => {
             placeholder="Email"/>
         </label>
         </form>
-        <Link to="/profile" className="profile_link">
+	       <Link to={email.toLowerCase().includes(domain.toLowerCase()) 
+					? '/profile' : '/'}  
+					className="profile_link">
          <input  type="submit" className="btn_login"  
             form="login"
             value="Enter"
