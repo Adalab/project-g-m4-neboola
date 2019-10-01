@@ -10,7 +10,7 @@ const Login = props => {
           <h1 className="header_title">neboola</h1>
         </header>
 
-      <main>
+      <main className="app_main">
 		    <h2 className="main_title">Vacaioonero</h2>
         <label htmlFor="" className="label_login">
           <input type="mail" className="input_mail"/>

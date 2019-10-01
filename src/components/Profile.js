@@ -1,22 +1,41 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import Info from './Info';
-import NewRequest from './NewRequest';
+//import Info from './Info';
+//import NewRequest from './NewRequest';
 import { Link } from 'react-router-dom';
 
 const Profile = props => {
 	return(
 		<React.Fragment>
-      <header>
-        <h1 className="">Neboola</h1>
+      <header className="prof_header">
+        <h1 className="prof_title">Neboola</h1>
       </header>
-      <main>
-        <div className="">
-          <img src="" alt="" className=""/>
-          <h2 className="">Judith Elliott</h2>
-          <Link to=""><NewRequest/></Link>
+      <main className="prof_main">
+        <div className="prof_container">
+          <img src="" alt="" className="prof_img"/>
+          <h2 className="prof_user-name">Judith Elliott</h2>
+          <p className="prof_mail"></p>
+          <Link to="/newRequest" className="newrequest_link">
+            Request free time
+          </Link>
         </div>
-        <Link to=""><Info/></Link>
+        <div className="info_conatiner-nav">
+          <Link to="/newRequest" className="newrequest_link">
+            <div className="prof-info_container">
+              {/*<i></i> */}
+              <p className="prof_number"></p>
+              <p className="prof_text"></p>
+            </div>
+          </Link>
+          
+          <Link to="/newRequest" className="newrequest_link">
+            <div className="prof-info_container">
+              {/*<i></i> */}
+              <p className="prof_number"></p>
+              <p className="prof_text"></p>
+            </div>
+          </Link>
+        </div>
       </main>
 		</React.Fragment>
 
