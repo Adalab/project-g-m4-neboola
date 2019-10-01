@@ -9,12 +9,14 @@ import check from './../images/check.png';
 import { Link } from 'react-router-dom';
 
 const Profile = props => {
-  const {data} = props;
+  const {data, deleteLS} = props;
 	return(
 		<div className="profile_container">
       <header className="prof_header">
         <h1 className="prof_title">Neboola</h1>
-        <img src={logout} alt="Logout icon" className="prof_logout-icon"></img>
+        <Link to="/" className="link" onClick={deleteLS}>
+          <img src={logout} alt="Logout icon" className="prof_logout-icon"></img>
+        </Link>
       </header>
       <main className="prof_main">
         <div className="prof_container">
