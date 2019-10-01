@@ -9,17 +9,38 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      user:''
+      user:'',
+			email: '',
     }
+		this.getEmail = this.getEmail.bind(this);
   }
 
+	getEmail(event) {
+		const newEmail = event.currentTarget.value;
+		this.setState({
+			email: newEmail
+		})
+	}
+
   render() {
+		const {email} = this.state;
     return (
       <div className="app">
         <Switch>
-	        <Route exact path="/" component={ Login }></Route>
-          <Route exact path="/profile" component={ Profile }></Route>
-          <Route exact path="/newRequest" component={ NewRequest }></Route>
+	        <Route exact path="/" render={
+						() => {
+							return(
+								<Login 
+									getEmail = {this.getEmail}
+									email = {email}
+								/>
+							);
+						}}
+					/>
+          <Route exact path="/profile" component={ Profile } 
+					/>
+          <Route exact path="/newRequest" component={ NewRequest } 
+					/>
         </Switch>
       </div>
     );
