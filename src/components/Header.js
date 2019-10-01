@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 const Header = props => {
 	return(
 		<React.Fragment>
-      <div className="">
-        <h1 className="">neboola</h1>
-        <Link to="">
-        
+      <div className="header">
+        <Link to="/profile" className="link profile_link">
+          <i className="header_icon-back"></i>
+          <h1 className="header-logo">neboola</h1>
+        </Link>
+        <Link to="/login" className="link logout_link">
+          <i className="logout_icon"></i>
         </Link>
       </div>
 		</React.Fragment>

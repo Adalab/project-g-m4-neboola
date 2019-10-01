@@ -20,7 +20,7 @@ const Profile = props => {
           </Link>
         </div>
         <div className="info_conatiner-nav">
-          <Link to="/newRequest" className="newrequest_link">
+          <Link to="/newRequest" className="link newrequest_link">
             <div className="prof-info_container">
               {/*<i></i> */}
               <p className="prof_number"></p>
@@ -28,7 +28,7 @@ const Profile = props => {
             </div>
           </Link>
           
-          <Link to="/newRequest" className="newrequest_link">
+          <Link to="/newRequest" className="link newrequest_link">
             <div className="prof-info_container">
               {/*<i></i> */}
               <p className="prof_number"></p>
