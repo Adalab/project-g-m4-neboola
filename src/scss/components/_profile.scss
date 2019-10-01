@@ -4,9 +4,16 @@
   left: 0px;
   z-index: 1;
 }
-// .prof_title {
-
-// }
+.prof_title {
+  background-image: url(../../images/logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 1px;
+  padding-top: 20px;
+  overflow: hidden;
+  margin: 0; 
+}
 // .prof_main {
 
 // }
