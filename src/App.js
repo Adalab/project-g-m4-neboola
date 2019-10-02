@@ -174,7 +174,7 @@ class App extends React.Component {
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
-    this.getCountDays();
+    //this.getCountDays();
     this.setState({
       [nameDateState]:dateInput
     },() => {
@@ -191,16 +191,20 @@ class App extends React.Component {
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state));
       this.getWeekends();
+      //console.log(this.state.countDays);
     })
   }
 
   getWeekends () {
     let pivotDate = this.state.startDate
     let counter = 0;
-    for( let i = 0 ; i < this.state.countDays; i++) {
+    for( let i = 0 ; i <= this.state.countDays; i++) {
+      
       if(moment().isoWeekday(pivotDate) > 5 ) {
         counter++
+        console.log('hola entre')
       }
+      console.log(pivotDate)
       pivotDate = moment.duration(1, 'd').add(pivotDate)
     }
     const newCountDays = this.state.countDays - counter;
