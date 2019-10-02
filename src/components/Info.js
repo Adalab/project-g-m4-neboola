@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Scheduled from './Scheduled';
+import Collapsibles from './Collapsibles';
 /* import Past from './Past';
 import Requests from './Requests';
  */
@@ -20,21 +21,20 @@ componentDidMount() {
 		.then(data => console.log(data))
 	}
     render() {
+        const { collapsibleId } = this.props;
 
         return(
-            <React.Fragment>
-          <Header/>
-          <h2 className="info_title">request time</h2>
-          <ul className="info_list">
-            <li className="info_schedule">scheduled</li>
-            <li className="info_past">past</li>
-            <li className="info_requests">resquests</li>
-          </ul>
-              <Scheduled/>
-    {/*       <Past/>
-          <Requests/> */}
-            </React.Fragment>
-
+          <React.Fragment>
+           <Header/>
+            <h2 className="info_title">request time</h2>
+            <ul className="info_list">
+              {collapsibleId.map(collapsibles => {
+                return (
+                  <li className="info_schedule"><div className="item_lists"> </div></li>
+                )
+              })}
+            </ul>
+          </React.Fragment>
         );
     }
 }

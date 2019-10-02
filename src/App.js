@@ -13,7 +13,8 @@ class App extends React.Component {
 		this.state = {
 			data: {},
 			email: '',
-			collapsaibleId: 'col-1'
+			collapsibleId: '',
+			requests: []
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -35,16 +36,16 @@ class App extends React.Component {
     }
   }
 
- handleCollapsable(event) {
-    const newCollapsablesId = event.currentTarget.getAttribute('data-id');
+ handleCollapsible(event) {
+    const newCollapsibleId = event.currentTarget.getAttribute('data-id');
     this.setState(prevState => {
-      if (newCollapsablesId === prevState.collapsablesId) {
+      if (newCollapsibleId === prevState.collapsibleId) {
         return {
-          collapsablesId: null
+          collapsibleId: null
         }
       } else {
         return {
-          collapsablesId: newCollapsablesId
+          collapsibleId: newCollapsibleId
         }
       }
     })
@@ -82,7 +83,7 @@ class App extends React.Component {
   }
 
   render() {
-		const {email, data} = this.state;
+		const {email, data, requests, collapsibleId} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -117,7 +118,8 @@ class App extends React.Component {
 							return(
 							<Info 
 								email = {email}
-								handleCollapsable={this.handleCollapsable}
+								handleCollapsible={this.handleCollapsible}
+								collapsibleId={collapsibleId}
 							/>
 						);
 						}
