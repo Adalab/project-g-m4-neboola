@@ -6,6 +6,8 @@ import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
 import moment from 'moment'
+import { thisExpression } from '@babel/types';
+import business from 'moment-business'
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class App extends React.Component {
     this.handleCreateRequest = this.handleCreateRequest.bind(this);
     this.postFetch =this.postFetch.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.getWeekends = this.getWeekends.bind(this);
     
   }
   componentDidMount(){
@@ -187,8 +190,28 @@ class App extends React.Component {
       countDays:duration
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state));
+      this.getWeekends();
+    })
+  }
+
+  getWeekends () {
+    let pivotDate = this.state.startDate
+    let counter = 0;
+    for( let i = 0 ; i < this.state.countDays; i++) {
+      if(moment().isoWeekday(pivotDate) > 5 ) {
+        counter++
+      }
+      pivotDate = moment.duration(1, 'd').add(pivotDate)
+    }
+    const newCountDays = this.state.countDays - counter;
+    this.setState({
+      countDays: newCountDays
+    },
+    () => {
+      localStorage.setItem('User', JSON.stringify(this.state));
       this.postFetch();
     })
+ 
   }
 
   render() {
