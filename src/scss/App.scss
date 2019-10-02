@@ -1,8 +1,9 @@
 @import 'core/variables';
+@import 'components/error';
 @import 'components/login';
 @import 'components/profile';
 @import 'components/info';
-@import 'components/error';
+
 
 .app {
   text-align: center;

@@ -23,6 +23,7 @@ const Login = props => {
 						value={email}
             placeholder="Email"/>
         </label>
+        <p className={`hidden  ${error === true ? 'message_error' : ''}`}>Error:[caption]</p>
         </form>
 	       <Link to={email.toLowerCase().includes(domain.toLowerCase()) 
 					? '/profile' : '/'}  

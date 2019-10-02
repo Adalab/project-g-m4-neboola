@@ -1,6 +1,18 @@
-
+.container_error{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    color:$color-light;
+    padding-top:24px;
+    padding-bottom:24px;
+    font-family: 18px;
+}
 .hidden {
     display: none;
+}
+.error_icon{
+    color:$color-light;
 }
 
 .text_error {
