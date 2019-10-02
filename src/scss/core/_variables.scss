@@ -6,4 +6,8 @@ $blue-dark:#007aff;
 $color-dark:#111111;
 
 //Font
+@font-face {
+    font-family: HelveticaNeue;
+    src: url('../../fonts/HelveticaNeue.ttc');
+}
 $font-family: HelveticaNeue;
