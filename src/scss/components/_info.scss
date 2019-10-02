@@ -3,8 +3,45 @@
   }
   .open .rollContainer-js{
     display: block;
+  
 }
 
 .collapsible_container{
-  background-color: red;
+  font-family: HelveticaNeue;
+  font-size: 36px;
+  font-weight: bold;
+
+}
+
+.info_collapsible{
+  list-style: none;
+}
+
+.info_list{
+  font-family: HelveticaNeue;
+
+}
+
+.create_date{
+  font-size: 10px;
+}
+
+.create_count{
+  font-size: 18px;
+}
+
+.text{
+  font-size: 13px;
+}
+
+
+.date{
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 144px;
+  height: 42px;
+  border-radius: 21px;
+  text-align: center;
 }

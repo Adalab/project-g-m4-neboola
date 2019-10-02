@@ -20,14 +20,15 @@ class Info extends React.Component {
                   
 										<li className="info_collapsible" key={collapsible._id}>
 											<div id={collapsible._id} className={`collapsible_container ${collapsibleId === collapsible._id ? 'open' : '' }`}>
-                        <div className="box_visible rollContainer-js" onClick={handleCollapsible} data-id={collapsible._id}>
+                        <div className="box_visible" onClick={handleCollapsible} data-id={collapsible._id}>
                           
                           <img className="collapsible_icon" src="" alt=""/>
                           <p className="create_date">{moment(collapsible.createdAt).format('DD/MM/YYYY')}</p> 
                           <p className="create_count">{collapsible.daysCount} days</p> 
                         </div>
-                        <div className="boxes_date" >
-                         <div className="date_container start">
+                        
+                        <div className="boxes_date rollContainer-js" >
+                         <div className="date_container start"> 
                             <p className=" text text-from">from</p>
                             <p className="date">{moment(collapsible.startDate).format('DD MMM YYYY')} </p>
                           </div>
