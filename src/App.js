@@ -120,8 +120,7 @@ class App extends React.Component {
 		.then(data => {
       this.setState ({
         requests: data
-
-      })
+      }, console.log(data))
 		})
 	}
 
@@ -186,7 +185,7 @@ class App extends React.Component {
       localStorage.setItem('User', JSON.stringify(this.state));
       this.postFetch();
     })
-  }
+  }	
 
 	handleOption(event) {
 		const newOption = event.currentTarget.id;
