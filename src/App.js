@@ -142,7 +142,7 @@ class App extends React.Component {
   handleCreateRequest(){
     console.log('holaa si entre ')
     this.getCountDays();
-    this.postFetch();
+   
 
   }
   postFetch(){
@@ -171,6 +171,7 @@ class App extends React.Component {
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
+    this.getCountDays();
     this.setState({
       [nameDateState]:dateInput
     },() => {
@@ -179,13 +180,14 @@ class App extends React.Component {
   }
 
   getCountDays(){
-    const x = new moment(this.state.startDate);
-    const y = new moment(this.state.endDate);
-    const  duration = moment.duration(y.diff(x)).days() + 1;
+    const startDate = new moment(this.state.startDate);
+    const endDate = new moment(this.state.endDate);
+    const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
     this.setState({
       countDays:duration
     },() => {
-      localStorage.setItem('User', JSON.stringify(this.state))
+      localStorage.setItem('User', JSON.stringify(this.state));
+      this.postFetch();
     })
   }
 
