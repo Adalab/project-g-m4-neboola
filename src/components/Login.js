@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Login = props => {
 	const domain = '@neboola.co';
-	const {email, getEmail, getFetch} = props;
+	const {email, getEmail, getFetch, error} = props;
 
 	return(
 		<div className="login_container">
@@ -34,7 +34,10 @@ const Login = props => {
           />
         </Link>
 
-		    <Error/>
+		    <Error 
+        email={email}
+        domain={domain}
+        error={error}/>
       </main>
 		</div>
 

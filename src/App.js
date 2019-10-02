@@ -22,7 +22,8 @@ class App extends React.Component {
       comment:'',
       countDays: 0,
 			collapsibleId: '',
-			requests: []
+      requests: [],
+      error: false
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -100,8 +101,14 @@ class App extends React.Component {
 	}
 
 	getFetch() {
+    const domain = '@neboola.co'
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/users/';
-		console.log(ENDPOINT + this.state.email);
+    if(this.state.email.toLowerCase().includes(domain.toLowerCase()) === false){
+      this.setState({
+        error: true
+      })
+    }
+    
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
     .then(data =>  
@@ -123,7 +130,6 @@ class App extends React.Component {
 		.then(data => {
       this.setState ({
         requests: data
-
       })
 		})
 	}
@@ -139,7 +145,7 @@ class App extends React.Component {
       comment:'',
       countDays: 0,
 			collapsibleId: '',
-			requests: []
+      requests: [],
     })
   }
   handleCreateRequest(){
@@ -168,7 +174,6 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(data => console.log(data))
-    
     
   }
   getDate(event){
@@ -219,7 +224,7 @@ class App extends React.Component {
   }
 
   render() {
-		const {email, data, startDate, endDate, currentDay, comment, requests, collapsibleId} = this.state;
+		const {email, data, startDate, endDate, currentDay, comment, requests, collapsibleId, error} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -229,7 +234,8 @@ class App extends React.Component {
 								<Login 
 									getEmail = {this.getEmail}
 									email = {email}
-									getFetch = {this.getFetch}
+                  getFetch = {this.getFetch}
+                  error={error}
 								/>
 							);
 						}}

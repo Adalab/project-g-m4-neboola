@@ -3,11 +3,12 @@ import React from 'react';
 
 
 const Error = props => {
+	const { error} = props;
 	return(
 		<React.Fragment>
       <div className="container_error container_ok">
 		{/*<i className="icon_error"></i>*/}
-        <p className="text_error text_ok">Oops! Don’t worry. Add the missing information or correct the incorrect information and try again.</p>
+        <p className={`hidden ${error === true ? 'text_error' : ''}`}>Oops! Don’t worry. Add the missing information or correct the incorrect information and try again.</p>
       </div>
 		</React.Fragment>
 
