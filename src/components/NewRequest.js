@@ -6,7 +6,7 @@ import Calendar from './Calendar';
 import Error from './Error';
 
 const NewRequest = props => {
-   const {getDate, startDate, endDate, currentDay,comment,getCountDays}=props
+   const {getDate, startDate, endDate, currentDay,comment,handleCreateRequest}=props
 	return(
 		<React.Fragment>
       <Header/>
@@ -21,7 +21,7 @@ const NewRequest = props => {
       <label htmlFor="" className="label_textarea">
       <textarea className="input-coment" type="text-area" placeholder="Comment" maxLength="140" name="comment" value={comment} onChange={getDate}/>
       </label>
-      <button className="btn_request" onClick={getCountDays}>Request holidays</button>
+      <button className="btn_request" onClick={handleCreateRequest}>Request holidays</button>
       <Error/>
 		</React.Fragment>
 

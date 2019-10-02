@@ -18,7 +18,8 @@ class App extends React.Component {
       startDate:'',
       endDate:'',
       currentDay:'',
-      comment:''
+      comment:'',
+      countDays: 0
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -28,6 +29,8 @@ class App extends React.Component {
     this.getDate = this.getDate.bind(this);
     this.getCurrentDate = this.getCurrentDate.bind(this);
     this.getCountDays= this.getCountDays.bind(this);
+    this.handleCreateRequest = this.handleCreateRequest.bind(this);
+    this.postFetch =this.postFetch.bind(this);
     
   }
   componentDidMount(){
@@ -43,7 +46,8 @@ class App extends React.Component {
         data:ls.data,
         startDate:ls.startDate,
         endDate:ls.endDate,
-        comment:ls.comment
+        comment:ls.comment,
+        countDays: ls.countDays
       })
     }
   }
@@ -112,6 +116,35 @@ class App extends React.Component {
       email: ''
     })
   }
+  handleCreateRequest(){
+    console.log('holaa si entre ')
+    this.getCountDays();
+    this.postFetch();
+
+  }
+  postFetch(){
+    const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests';
+    const user = {
+      owner: this.state.email,
+	    startDate: this.state.startDate,
+	    endDate: this.state.endDate,
+	    daysCount: this.state.countDays,
+	    status: "pending",
+	    userComments: this.state.comment
+    }
+    console.log(user)
+    fetch (ENDPOINT, {
+        method: 'POST', 
+        body : JSON.stringify(user), 
+        headers: {
+          'content-type' : 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+    
+    
+  }
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
@@ -119,14 +152,18 @@ class App extends React.Component {
       [nameDateState]:dateInput
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state))
-    })
+    });
   }
 
   getCountDays(){
     const x = new moment(this.state.startDate);
     const y = new moment(this.state.endDate);
     const  duration = moment.duration(y.diff(x)).days() + 1;
-    console.log(duration);
+    this.setState({
+      countDays:duration
+    },() => {
+      localStorage.setItem('User', JSON.stringify(this.state))
+    })
   }
 
   render() {
@@ -168,7 +205,7 @@ class App extends React.Component {
                 endDate={endDate}
                 currentDay={currentDay}
                 comment ={comment}
-                getCountDays={this.getCountDays}
+                handleCreateRequest={this.handleCreateRequest}
 							/>
 						);
 						}
