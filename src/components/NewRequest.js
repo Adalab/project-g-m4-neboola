@@ -6,10 +6,10 @@ import Calendar from './Calendar';
 import Error from './Error';
 
 const NewRequest = props => {
-   const {getDate, startDate, endDate, currentDay,comment,handleCreateRequest}=props
+   const {getDate, startDate, endDate, currentDay,comment,handleCreateRequest, deleteLS}=props
 	return(
 		<React.Fragment>
-      <Header/>
+      <Header deleteLS={deleteLS}/>
       <h2 className="requests_time">Request free time</h2>
       <Date
       getDate={getDate}

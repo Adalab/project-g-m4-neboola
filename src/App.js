@@ -258,6 +258,7 @@ class App extends React.Component {
                 currentDay={currentDay}
                 comment ={comment}
                 handleCreateRequest={this.handleCreateRequest}
+                deleteLS={this.deleteLS}
 							/>
 						);
 						}
