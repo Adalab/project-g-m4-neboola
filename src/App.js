@@ -14,12 +14,13 @@ class App extends React.Component {
 		this.state = {
 			data: {},
 			email: '',
-      collapsaibleId: 'col-1',
       startDate:'',
       endDate:'',
       currentDay:'',
       comment:'',
       countDays: 0
+			collapsibleId: '',
+			requests: []
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -31,11 +32,13 @@ class App extends React.Component {
     this.getCountDays= this.getCountDays.bind(this);
     this.handleCreateRequest = this.handleCreateRequest.bind(this);
     this.postFetch =this.postFetch.bind(this);
+    this.handleCollapsible = this.handleCollapsible.bind(this);
     
   }
   componentDidMount(){
     this.getUser()
     this.getCurrentDate()
+    this.fetchRequest()
   }
 
   getUser(){
@@ -71,16 +74,16 @@ class App extends React.Component {
     
   }
 
- handleCollapsable(event) {
-    const newCollapsablesId = event.currentTarget.getAttribute('data-id');
+ handleCollapsible(event) {
+    const newCollapsibleId = event.currentTarget.getAttribute('data-id');
     this.setState(prevState => {
-      if (newCollapsablesId === prevState.collapsablesId) {
+      if (newCollapsibleId === prevState.collapsibleId) {
         return {
-          collapsablesId: null
+          collapsibleId: null
         }
       } else {
         return {
-          collapsablesId: newCollapsablesId
+          collapsibleId: newCollapsibleId
         }
       }
     })
@@ -109,11 +112,25 @@ class App extends React.Component {
     ))
     .catch(error => { console.log(error)});
   }
+
+	fetchRequest(){
+		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests?owner=';
+		fetch(ENDPOINT + this.state.email)
+		.then(response => response.json())
+		.then(data => {
+      this.setState ({
+        requests: data
+
+      })
+		})
+	}
+
   deleteLS() {
     localStorage.removeItem('User');
     this.setState({
       data: {},
-      email: ''
+      email: '',
+			requests: []
     })
   }
   handleCreateRequest(){
@@ -167,7 +184,7 @@ class App extends React.Component {
   }
 
   render() {
-		const {email, data, startDate, endDate, currentDay, comment} = this.state;
+		const {email, data, startDate, endDate, currentDay, comment, requests, collapsibleId} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -216,7 +233,10 @@ class App extends React.Component {
 							return(
 							<Info 
 								email = {email}
-								handleCollapsable={this.handleCollapsable}
+								handleCollapsible={this.handleCollapsible}
+								collapsibleId={collapsibleId}
+								requests={requests}
+								fetchRequest={this.fetchRequest}
 							/>
 						);
 						}
