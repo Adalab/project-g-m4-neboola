@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import PropTypes from 'prop-types';
 
 const Collapsibles = props => {
@@ -7,7 +7,7 @@ const Collapsibles = props => {
    collapsibleId,
    handleCollapsible
   } = props;
-	
+
 	return(
 		<React.Fragment>
 			<div id={collapsible._id} className={`collapsible_container ${collapsibleId === collapsible._id ? 'open' : '' }`}>
@@ -37,4 +37,4 @@ const Collapsibles = props => {
 Collapsibles.propTypes = {
 
 }
-export default Collapsibles;
+export default Collapsibles; */
