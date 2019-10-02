@@ -11,7 +11,7 @@ const Info = props => {
 					currentDay, handleOption, option } = props;
 	let filteredRequests = [];
 	let mappedRequests = [];
-	let countedDays = null;
+	let countedDays = 0;
 	switch(option){
 		case 'requested': 
 				filteredRequests = requests.filter(collapsible => collapsible.status !== 'approved');
