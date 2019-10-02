@@ -19,7 +19,7 @@ const NewRequest = props => {
       />
       <Calendar/>
       <label htmlFor="" className="label_textarea">
-      <textarea className="input-coment" type="text-area" placeholder="Comment" maxLength="140" name="comment" value={comment} onChange={getDate}/>
+      <textarea className="input-comment" type="text-area" placeholder="Comment" maxLength="140" name="comment" value={comment} onChange={getDate} rows="5" cols="33"/>
       </label>
       <button className="btn_request" onClick={handleCreateRequest}>Request holidays</button>
       <Error/>
