@@ -18,7 +18,7 @@ class App extends React.Component {
       endDate:'',
       currentDay:'',
       comment:'',
-      countDays: 0
+      countDays: 0,
 			collapsibleId: '',
 			requests: []
 		}
