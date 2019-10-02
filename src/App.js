@@ -5,6 +5,7 @@ import Profile from './components/Profile';
 import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
+import moment from 'moment'
 
 class App extends React.Component {
   constructor(props) {
@@ -26,6 +27,8 @@ class App extends React.Component {
     this.deleteLS = this.deleteLS.bind(this);
     this.getDate = this.getDate.bind(this);
     this.getCurrentDate = this.getCurrentDate.bind(this);
+    this.getCountDays= this.getCountDays.bind(this);
+    
   }
   componentDidMount(){
     this.getUser()
@@ -61,6 +64,7 @@ class App extends React.Component {
     this.setState({
       currentDay:currentDay
     },() => {localStorage.setItem('User', JSON.stringify(this.state))})
+    
   }
 
  handleCollapsable(event) {
@@ -118,6 +122,13 @@ class App extends React.Component {
     })
   }
 
+  getCountDays(){
+    const x = new moment(this.state.startDate);
+    const y = new moment(this.state.endDate);
+    const  duration = moment.duration(y.diff(x)).days() + 1;
+    console.log(duration);
+  }
+
   render() {
 		const {email, data, startDate, endDate, currentDay, comment} = this.state;
     return (
@@ -157,6 +168,7 @@ class App extends React.Component {
                 endDate={endDate}
                 currentDay={currentDay}
                 comment ={comment}
+                getCountDays={this.getCountDays}
 							/>
 						);
 						}
