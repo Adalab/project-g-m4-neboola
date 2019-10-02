@@ -129,7 +129,13 @@ class App extends React.Component {
     localStorage.removeItem('User');
     this.setState({
       data: {},
-      email: '',
+			email: '',
+      startDate:'',
+      endDate:'',
+      currentDay:'',
+      comment:'',
+      countDays: 0,
+			collapsibleId: '',
 			requests: []
     })
   }
