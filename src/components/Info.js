@@ -7,7 +7,7 @@ import moment from "moment";
 
 class Info extends React.Component {
     render() {
-        const { requests, collapsibleId, handleCollapsible } = this.props;
+        const { requests, collapsibleId, handleCollapsible, currentDay } = this.props;
 
         return(
           <React.Fragment>
@@ -15,9 +15,12 @@ class Info extends React.Component {
 							<h2 className="info_title">request time</h2>
 							<ul className="info_list">
                 <p>{`5 days  `}</p>
-								{requests.map(collapsible => {
+								{requests
+								.filter(collapsible => collapsible.status==='approved')
+								.filter(collapsible => collapsible.status==='pending')
+								.filter(collapsible => moment(collapsible.endDate).format('DD-MM-YYYY') >= currentDay)
+								.map(collapsible => {
 									return (
-                  
 										<li className="info_collapsible" key={collapsible._id}>
 											<div id={collapsible._id} className={`collapsible_container ${collapsibleId === collapsible._id ? 'open' : '' }`}>
                         <div className="box_visible" onClick={handleCollapsible} data-id={collapsible._id}>

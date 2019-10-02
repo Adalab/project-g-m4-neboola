@@ -140,11 +140,9 @@ class App extends React.Component {
     })
   }
   handleCreateRequest(){
-    console.log('holaa si entre ')
     this.getCountDays();
-   
-
   }
+	
   postFetch(){
     const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests';
     const user = {
@@ -245,6 +243,7 @@ class App extends React.Component {
 								collapsibleId={collapsibleId}
 								requests={requests}
 								fetchRequest={this.fetchRequest}
+								currentDay={currentDay}
 							/>
 						);
 						}
