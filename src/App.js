@@ -21,9 +21,11 @@ class App extends React.Component {
     this.getFetch = this.getFetch.bind(this);
     this.getUser = this.getUser.bind(this);
     this.deleteLS = this.deleteLS.bind(this);
+		this.handleCollapsible = this.handleCollapsible.bind(this);
   }
   componentDidMount(){
     this.getUser()
+		this.fetchRequest()
   }
 
   getUser(){
@@ -74,11 +76,25 @@ class App extends React.Component {
     ))
     .catch(error => { console.log(error)});
   }
+
+	fetchRequest(){
+		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests?owner=';
+		fetch(ENDPOINT + this.state.email)
+		.then(response => response.json())
+		.then(data => {
+      this.setState ({
+        requests: data
+
+      })
+		})
+	}
+
   deleteLS() {
     localStorage.removeItem('User');
     this.setState({
       data: {},
-      email: ''
+      email: '',
+			requests: []
     })
   }
 
@@ -120,6 +136,8 @@ class App extends React.Component {
 								email = {email}
 								handleCollapsible={this.handleCollapsible}
 								collapsibleId={collapsibleId}
+								requests={requests}
+								fetchRequest={this.fetchRequest}
 							/>
 						);
 						}
