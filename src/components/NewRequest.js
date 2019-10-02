@@ -8,7 +8,6 @@ import Error from './Error';
 const NewRequest = props => {
 	return(
 		<React.Fragment>
-		  
       <Header/>
       <h2 className="requests_time">Request free time</h2>
       <Date/>
