@@ -13,16 +13,23 @@ class App extends React.Component {
 		this.state = {
 			data: {},
 			email: '',
-			collapsaibleId: 'col-1'
+      collapsaibleId: 'col-1',
+      startDate:'',
+      endDate:'',
+      currentDay:'',
+      comment:''
 		}
 
 		this.getEmail = this.getEmail.bind(this);
     this.getFetch = this.getFetch.bind(this);
     this.getUser = this.getUser.bind(this);
     this.deleteLS = this.deleteLS.bind(this);
+    this.getDate = this.getDate.bind(this);
+    this.getCurrentDate = this.getCurrentDate.bind(this);
   }
   componentDidMount(){
     this.getUser()
+    this.getCurrentDate()
   }
 
   getUser(){
@@ -30,9 +37,30 @@ class App extends React.Component {
     if(ls !== null){
       this.setState({
         email: ls.email,
-        data:ls.data
+        data:ls.data,
+        startDate:ls.startDate,
+        endDate:ls.endDate,
+        comment:ls.comment
       })
     }
+  }
+
+  getCurrentDate(){
+    const date = new Date();
+    const year= date.getFullYear();
+    let month= parseInt(date.getMonth())+1;
+    let day= date.getDate();
+    if (parseInt(day)< 10){
+      day='0'+day
+    }
+    if (parseInt(month)< 10){
+      month ='0'+ month
+    }
+    const currentDay=year + '-' + month + '-'+ day;
+    console.log(currentDay)
+    this.setState({
+      currentDay:currentDay
+    },() => {localStorage.setItem('User', JSON.stringify(this.state))})
   }
 
  handleCollapsable(event) {
@@ -80,9 +108,18 @@ class App extends React.Component {
       email: ''
     })
   }
+  getDate(event){
+    const dateInput = event.currentTarget.value;
+    const nameDateState =event.currentTarget.name;
+    this.setState({
+      [nameDateState]:dateInput
+    },() => {
+      localStorage.setItem('User', JSON.stringify(this.state))
+    })
+  }
 
   render() {
-		const {email, data} = this.state;
+		const {email, data, startDate, endDate, currentDay, comment} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -110,7 +147,20 @@ class App extends React.Component {
 							)
 						}} 
 					/>
-          <Route exact path="/profile/new-request" component={ NewRequest } 
+          <Route exact path="/profile/new-request" render={
+						() => {
+							return(
+							<NewRequest 
+								email = {email}
+                getDate ={this.getDate}
+                startDate={startDate}
+                endDate={endDate}
+                currentDay={currentDay}
+                comment ={comment}
+							/>
+						);
+						}
+					}
 					/>
 					<Route exact path="/profile/info" render={
 						() => {
