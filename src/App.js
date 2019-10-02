@@ -21,6 +21,7 @@ class App extends React.Component {
     this.getFetch = this.getFetch.bind(this);
     this.getUser = this.getUser.bind(this);
     this.deleteLS = this.deleteLS.bind(this);
+		this.handleCollapsible = this.handleCollapsible.bind(this);
   }
   componentDidMount(){
     this.getUser()
