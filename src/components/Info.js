@@ -13,15 +13,17 @@ class Info extends React.Component {
 
         return(
           <React.Fragment>
-           <Header/>
-            <h2 className="info_title">request time</h2>
-            <ul className="info_list">
-              {requests.map(collapsibles => {
-                return (
-                  <li className="info_schedule"><div className="item_lists" id={collapsibles.id} key={collapsibles.id}> {collapsibles.id}</div></li>
-                )
-              })}
-            </ul>
+						<Header/>
+							<h2 className="info_title">request time</h2>
+							<ul className="info_list">
+								{requests.map(collapsible => {
+									return (
+										<li className="info_schedule" key={collapsible._id} id={collapsible._id}>
+											<div className="item_lists">{collapsible._id}</div>
+										</li>
+									)
+								})}
+							</ul>
           </React.Fragment>
         );
     }
