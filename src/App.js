@@ -186,6 +186,7 @@ class App extends React.Component {
     const startDate = new moment(this.state.startDate);
     const endDate = new moment(this.state.endDate);
     const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
+    console.log("pre " + duration)
     this.setState({
       countDays:duration
     },() => {
@@ -196,16 +197,15 @@ class App extends React.Component {
   }
 
   getWeekends () {
-    let pivotDate = this.state.startDate
+    let pivotDate = moment(this.state.startDate)
     let counter = 0;
-    for( let i = 0 ; i <= this.state.countDays; i++) {
-      
-      if(moment().isoWeekday(pivotDate) > 5 ) {
+    for( let i = 0 ; i < this.state.countDays; i++) {
+      if(pivotDate.day() === 6 || pivotDate.day() === 0 ) {
         counter++
-        console.log('hola entre')
+        console.log('finde')
       }
-      console.log(pivotDate)
-      pivotDate = moment.duration(1, 'd').add(pivotDate)
+      console.log(pivotDate.day())
+      pivotDate = pivotDate.add(1, 'days')
     }
     const newCountDays = this.state.countDays - counter;
     this.setState({
