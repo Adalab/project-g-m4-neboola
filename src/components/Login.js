@@ -4,7 +4,8 @@ import Error from './Error';
 import { Link } from 'react-router-dom';
 
 const Login = props => {
-	const domain = '@neboola.co';
+  const domain = '@neboola.co';
+
 	const {email, getEmail, getFetch, error} = props;
 
 	return(
@@ -25,10 +26,10 @@ const Login = props => {
         </label>
         <p className={`hidden  ${error === true ? 'message_error' : ''}`}>Error:[caption]</p>
         </form>
-	       <Link to={email.toLowerCase().includes(domain.toLowerCase()) 
-					? '/profile' : '/'}  
-					className="profile_link">
-         <input  type="submit" className="btn_login"
+        <Link 
+          to={(email.toLowerCase().includes(domain.toLowerCase()) && email.charAt(0) !== '@') ? '/profile' : '/'}  
+				  className="profile_link">
+          <input  type="submit" className="btn_login"
             form="login"
             value="Enter"
             onClick={getFetch}

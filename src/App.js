@@ -107,7 +107,7 @@ class App extends React.Component {
 	getFetch() {
     const domain = '@neboola.co'
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/users/';
-    if(this.state.email.toLowerCase().includes(domain.toLowerCase()) === false){
+    if(this.state.email.toLowerCase().includes(domain.toLowerCase()) === false || this.state.email.charAt(0) === '@'){
       this.setState({
         error: true
       })
