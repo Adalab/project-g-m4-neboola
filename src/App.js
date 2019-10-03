@@ -37,12 +37,12 @@ class App extends React.Component {
     this.handleCollapsible = this.handleCollapsible.bind(this);
     this.getWeekends = this.getWeekends.bind(this);
 		this.handleOption = this.handleOption.bind(this);
+		this.removeRequest = this.removeRequest.bind(this);
   }
   
   componentDidMount(){
     this.getUser()
     this.getCurrentDate()
-    this.fetchRequest()
   }
 
   getUser(){
@@ -54,7 +54,8 @@ class App extends React.Component {
         startDate:ls.startDate,
         endDate:ls.endDate,
         comment:ls.comment,
-        countDays: ls.countDays
+        countDays: ls.countDays,
+				requests: ls.requests
       })
     }
   }
@@ -107,7 +108,7 @@ class App extends React.Component {
         error: true
       })
     }
-    
+    console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
     .then(data =>  
@@ -120,6 +121,7 @@ class App extends React.Component {
     
     ))
     .catch(error => { console.log(error)});
+		this.fetchRequest();
   }
 
 	fetchRequest(){
@@ -127,10 +129,14 @@ class App extends React.Component {
 		console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response => response.json())
-		.then(data => {
+		.then(newRequest => {
       this.setState ({
-        requests: data
-      })
+        requests: newRequest
+      	},
+				() => {
+      		localStorage.setItem('User', JSON.stringify(this.state))
+    		}
+			)
 		})
 	}
 
@@ -228,6 +234,18 @@ class App extends React.Component {
 		});
 	} 
 
+	removeRequest(event) {
+		const desiredRequest = event.currentTarget.id;
+		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests/';
+		console.log(ENDPOINT + desiredRequest);
+		fetch(ENDPOINT + desiredRequest	, {
+			method: 'DELETE',
+			headers: {'Content-Type': 'application/json'}
+		})
+		.then(response => response.json())
+		.then(data => this.getFetch())
+	}
+
   render() {
 		const {email, data, startDate, endDate, currentDay, 
 					comment, requests, collapsibleId, option, error} = this.state;
@@ -288,6 +306,7 @@ class App extends React.Component {
 								currentDay={currentDay}
 								option={option}
 								handleOption={this.handleOption}
+								removeRequest={this.removeRequest}
 							/>
 						);
 						}
