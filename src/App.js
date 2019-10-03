@@ -6,6 +6,8 @@ import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
 import moment from 'moment'
+import { thisExpression } from '@babel/types';
+import business from 'moment-business'
 
 class App extends React.Component {
   constructor(props) {
@@ -34,9 +36,10 @@ class App extends React.Component {
     this.handleCreateRequest = this.handleCreateRequest.bind(this);
     this.postFetch =this.postFetch.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
+    this.getWeekends = this.getWeekends.bind(this);
 		this.handleOption = this.handleOption.bind(this);
-    
   }
+  
   componentDidMount(){
     this.getUser()
     this.getCurrentDate()
@@ -167,7 +170,7 @@ class App extends React.Component {
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
-    this.getCountDays();
+    //this.getCountDays();
     this.setState({
       [nameDateState]:dateInput
     },() => {
@@ -179,13 +182,36 @@ class App extends React.Component {
     const startDate = new moment(this.state.startDate);
     const endDate = new moment(this.state.endDate);
     const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
+    console.log("pre " + duration)
     this.setState({
       countDays:duration
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state));
+      this.getWeekends();
+      //console.log(this.state.countDays);
+    })
+  }
+
+  getWeekends () {
+    let pivotDate = moment(this.state.startDate)
+    let counter = 0;
+    for( let i = 0 ; i < this.state.countDays; i++) {
+      if(pivotDate.day() === 6 || pivotDate.day() === 0 ) {
+        counter++
+        console.log('finde')
+      }
+      console.log(pivotDate.day())
+      pivotDate = pivotDate.add(1, 'days')
+    }
+    const newCountDays = this.state.countDays - counter;
+    this.setState({
+      countDays: newCountDays
+    },
+    () => {
+      localStorage.setItem('User', JSON.stringify(this.state));
       this.postFetch();
     })
-  }	
+  }
 
 	handleOption(event) {
 		const newOption = event.currentTarget.id;
@@ -235,6 +261,7 @@ class App extends React.Component {
                 currentDay={currentDay}
                 comment ={comment}
                 handleCreateRequest={this.handleCreateRequest}
+                deleteLS={this.deleteLS}
 							/>
 						);
 						}

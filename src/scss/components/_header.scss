@@ -1,0 +1,11 @@
+.header {
+  background-image: linear-gradient(274deg, $blue-dark-midtone, $blue-light-midtone);
+  display: flex;
+  height: 56px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_back-link {
+  display: flex;
+  margin-left: 4px;
+}

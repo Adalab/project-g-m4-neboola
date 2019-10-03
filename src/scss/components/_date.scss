@@ -1,0 +1,43 @@
+.date_input {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 19.5px;
+  height: 39px;
+  border:none;
+  color: $color-light;
+  font-size: 18px;
+  font-weight: bold;
+  width: 120px;
+}
+.dates_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 308px;
+  margin: 0 auto;
+}
+.dates_arrow {
+  height: 16px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.start-date_container{
+  display: flex;
+  flex-direction: column;
+}
+.end-date_container{
+  display: flex;
+  flex-direction: column;
+}
+.from-date_label {
+  font-size: 13px;
+  text-align: end;
+  margin-right: 16px;
+  margin-bottom: 7px;
+}
+.end-date_label {
+  font-size: 13px;
+  text-align: start;
+  margin-left: 16px;
+  margin-bottom: 7px;
+
+}
