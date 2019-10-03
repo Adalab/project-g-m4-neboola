@@ -8,7 +8,7 @@ const Error = props => {
 		<React.Fragment>
       <div  className={`hidden container_error ${error === true ? 'text_error' : ''}`}>
 	  	<img className="error_icon" src={errorIcon} alt="Error icon"></img>
-        <p >Oops! Don’t worry. Add the missing information or correct the incorrect information and try again.</p>
+        <p className="error_message">Oops! Don’t worry. Add the missing information or correct the incorrect information and try again.</p>
       </div>
 		</React.Fragment>
 
