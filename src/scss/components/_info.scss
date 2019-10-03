@@ -2,15 +2,23 @@
   display: none;
   }
   .open .rollContainer-js{
-    display: block;
+    display: flex;
   
 }
 
-.collapsible_container{
+.info_title{
+  margin-left: 11px;
+  text-align: start;
+  font-size: 36px;
+  font-weight: bold;
+  color:$color-dark;
+}
+
+.collapsible_container {
   font-family: HelveticaNeue;
   font-size: 36px;
   font-weight: bold;
-
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .info_collapsible{
@@ -19,7 +27,78 @@
 
 .info_list{
   font-family: HelveticaNeue;
+}
 
+.options_list{
+  margin: 0px;
+  padding: 0px;
+ 
+  list-style: none;
+  width: 354px;
+  height: 29px;
+  color: $blue-dark;
+  // border: 0.5px solid $blue-dark;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.list_request{
+  width: 118px;
+  margin: 7.5px;
+}
+
+.info_list{
+  margin: 0px;
+  padding: 0px;
+  font-family: HelveticaNeue;
+}
+
+.collapsible_icon{
+  width: 20px;
+  height: 20px;
+  padding: 18px 0 18px 18px;
+}
+
+
+.create_date{
+  font-size: 10px;
+  margin: 10px 10px 0 10px;
+}
+
+.create_count{
+  font-size: 18px;
+  margin: 1px;
+}
+
+.box_visible{
+  display: flex;
+}
+
+.text{
+  font-size: 13px;
+}
+
+.text-from{
+  text-align: right;
+ 
+}
+
+.text-to{
+  text-align: left;
+
+}
+
+.date_container{
+  // background-color: red;
+  width: 144px;
+}
+
+.right-arrow{
+  width: 16px;
+  height: 16px;
+  margin: 20px;
+  color: $color-dark;
 }
 
 .create_date{
@@ -32,16 +111,54 @@
 
 .text{
   font-size: 13px;
+  margin: 16px 0 7px;
 }
 
 
 .date{
+  // margin: 7px 16px 0px 19px;
   font-size: 18px;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color:$color-light;
   width: 144px;
   height: 42px;
   border-radius: 21px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-start{
+  margin: 7px 16px 16px 16px;
+}
+
+.date-end{
+  margin: 7px 16px 16px 0px;
+}
+
+.options_list{
+  margin: auto;
+}
+
+.option{
+  border: 0.5px solid $blue-dark;
+  height: 29px;
+  width: 118px;
+  padding: 7px 0 0 0;
+}
+
+.selected-option{
+  background-color: $blue-dark;
+  color:$color-light;
+}
+
+.delete-btn{
+  font-family: HelveticaNeue;
+  font-size: 18px;
+  color: $blue-dark;
+  text-transform: capitalize;
+  background-color: none;
+  border: none;
+  display: block;
 }
