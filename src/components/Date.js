@@ -25,7 +25,6 @@ const Date = props => {
       </div>
     </div>
 		</React.Fragment>
-
 	);
 }
 
