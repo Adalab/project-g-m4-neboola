@@ -177,7 +177,13 @@ class App extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({
+          startDate:'',
+          endDate:'',
+          comment:''
+        });
+        console.log(data)})
   }
 
   getDate(event){
@@ -185,7 +191,9 @@ class App extends React.Component {
     const nameDateState =event.currentTarget.name;
     //this.getCountDays();
     this.setState({
-      [nameDateState]:dateInput
+      [nameDateState]:dateInput,
+      errorNewRequest: false,
+      successNewRequest:false
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state))
     });
