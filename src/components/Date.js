@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import rightArrow from './../images/right-arrow.png';
 
 
@@ -30,6 +30,9 @@ const Date = props => {
 }
 
 Date.propTypes = {
-
+  getDate: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  currentDay:PropTypes.string.isRequired,
 }
 export default Date;

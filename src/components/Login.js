@@ -28,7 +28,7 @@ const Login = props => {
 	       <Link to={email.toLowerCase().includes(domain.toLowerCase()) 
 					? '/profile' : '/'}  
 					className="profile_link">
-         <input  type="submit" className="btn_login"  
+         <input  type="submit" className="btn_login"
             form="login"
             value="Enter"
             onClick={getFetch}
@@ -46,9 +46,10 @@ const Login = props => {
 }
 
 Login.propTypes = {
+  email: PropTypes.string.isRequired,
 	getEmail: PropTypes.func.isRequired,
-	getFetch: PropTypes.func.isRequired,
-	email: PropTypes.string.isRequired
+  getFetch: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
 }
 
 export default Login;

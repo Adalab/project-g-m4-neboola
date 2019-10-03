@@ -6,8 +6,7 @@ import moment from "moment";
 
 const Info = props => {
   
-	const { requests, collapsibleId, handleCollapsible, 
-					currentDay, handleOption, option } = props;
+	const { requests, collapsibleId, handleCollapsible, currentDay, handleOption, option } = props;
 	let filteredRequests = [];
 	let mappedRequests = [];
 	let countedDays = 0;
@@ -78,10 +77,11 @@ const Info = props => {
 
 
 Info.propTypes = {
-	requests: PropTypes.arrayOf(PropTypes.object), 
-	collapsibleId: PropTypes.string, 
-	handleCollapsible: PropTypes.func, 
-	currentDay: PropTypes.string,
-	handleOption: PropTypes.func
+	requests: PropTypes.arrayOf(PropTypes.object).isRequired,
+	collapsibleId: PropTypes.string.isRequired,
+	handleCollapsible: PropTypes.func.isRequired, 
+	currentDay: PropTypes.string.isRequired,
+	handleOption: PropTypes.func.isRequired,
+	option: PropTypes.func.isRequired
 }
 export default Info;

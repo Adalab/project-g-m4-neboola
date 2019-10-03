@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import errorIcon from './../images/error.svg';
 
 const Error = props => {
@@ -16,7 +16,7 @@ const Error = props => {
 }
 
 Error.propTypes = {
-
+	error: PropTypes.bool.isRequired,
 }
 
 export default Error;
