@@ -21,7 +21,4 @@ const Header = props => {
 	);
 }
 
-Header.propTypes = {
-
-}
 export default Header;

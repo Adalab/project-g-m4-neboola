@@ -1,12 +1,13 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Date from './Date';
 import ErrorNewRequest from './ErrorRequest';
 import SuccessRequest from './SuccessRequest';
 
 const NewRequest = props => {
-   const {getDate, startDate, endDate, currentDay,comment,handleCreateRequest, deleteLS,errorNewRequest,successNewRequest}=props
+   const {getDate, startDate, endDate, currentDay,comment,
+          handleCreateRequest, deleteLS,errorNewRequest,successNewRequest}=props
 	return(
 		<React.Fragment>
       <Header deleteLS={deleteLS}/>
@@ -33,8 +34,13 @@ const NewRequest = props => {
 }
 
 NewRequest.propTypes = {
-
+   getDate: PropTypes.string.isRequired,
+   startDate: PropTypes.string.isRequired,
+   endDate: PropTypes.string.isRequired,
+   currentDay:PropTypes.string.isRequired,
+   commet: PropTypes.string.isRequired,
+   handleCreateRequest: PropTypes.func.isRequired,
+   deleteLS: PropTypes.func.isRequired
 }
-
 
 export default NewRequest;
