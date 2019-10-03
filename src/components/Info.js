@@ -38,9 +38,9 @@ const Info = props => {
 			<Header/>
 				<h2 className="info_title">request time</h2>
 				<ul className="options_list">
-					<li className="option option_scheduled" id="scheduled" onClick={handleOption}>scheduled</li>
-					<li className="option option_past" id="past" onClick={handleOption}>past</li>
-					<li className="option option_requests" id="requested" onClick={handleOption}>requests</li>
+					<li className={`option ${option === 'scheduled' ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>
+					<li className={`option ${option === 'past' ? 'selected-option' : ''}`} id="past" onClick={handleOption}>past</li>
+					<li className={`option ${option === 'requested' ? 'selected-option' : ''}`} id="requested" onClick={handleOption}>requests</li>
 				</ul>
 				<p>{`${countedDays} days ${option}`}</p>
 				<ul className="info_list">
@@ -58,24 +58,21 @@ const Info = props => {
 										</div>
 									</div>
 									<div className="boxes_date rollContainer-js" d={collapsible._id}>
-								
-										<div className="date_container start"> 
-											<p className=" text text-from">from</p>
-											<p className="date date-start">{moment(collapsible.startDate).format('DD MMM YYYY')} </p>
-										</div>
-										<img className="right-arrow" src={arrow} alt="flecha hacia la derecha"/>
-										<div className="date_container end">
-											<p className=" text text-to">to</p>
-											<p className="date date-end"> {moment(collapsible.endDate).format('DD MMM YYYY')}</p>
-										</div>
-										<div>
+											<div className="date_container start"> 
+												<p className=" text text-from">from</p>
+												<p className="date date-start">{moment(collapsible.startDate).format('DD MMM YYYY')} </p>
+											</div>
+											<img className="right-arrow" src={arrow} alt="flecha hacia la derecha"/>
+											<div className="date_container end">
+												<p className=" text text-to">to</p>
+												<p className="date date-end"> {moment(collapsible.endDate).format('DD MMM YYYY')}</p>
+											</div>
 										<button type="button" 
 											className={`delete-btn ${option === 'requested' ? '' : 'hidden'}`}
 											id={collapsible._id} 
 											onClick={removeRequest}>
 											delete request
 										</button>
-									</div>
 									</div>
 								
 								</div>

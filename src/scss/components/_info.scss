@@ -148,24 +148,17 @@
   padding: 7px 0 0 0;
 }
 
-// .option_scheduled{
-//   background-color: $blue-dark;
-//   color:$color-light;
-// }
-
-// .option_past{
-//   background-color: $blue-dark;
-//   color:$color-light;
-// }
-
-// .option_requests{
-//   background-color: $blue-dark;
-//   color:$color-light;
-// }
+.selected-option{
+  background-color: $blue-dark;
+  color:$color-light;
+}
 
 .delete-btn{
+  font-family: HelveticaNeue;
+  font-size: 18px;
   color: $blue-dark;
   text-transform: capitalize;
   background-color: none;
-  appearance:inherit;
+  border: none;
+  display: block;
 }
