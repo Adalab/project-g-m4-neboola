@@ -5,35 +5,10 @@ import Header from './Header';
 import moment from "moment";
 
 
-const Info = props => {
-  
-	const { requests, collapsibleId, handleCollapsible, 
-					currentDay, handleOption, option } = props;
-	let filteredRequests = [];
-	let mappedRequests = [];
-	let countedDays = 0;
-	switch(option){
-		case 'requested': 
-				filteredRequests = requests.filter(collapsible => collapsible.status !== 'approved');
-				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
-				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
-				break;
-		case 'past':
-				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' &&  moment(collapsible.endDate).format('DD-MM-YYYY') <= currentDay);
-				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
-				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
-				break;
-		case 'scheduled':
-				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' && moment(collapsible.endDate).format('DD-MM-YYYY') >= currentDay);
-				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
-				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
-				break;
-		default:
-				filteredRequests = requests;
-	}				
-	console.log(filteredRequests);
-	console.log(mappedRequests);
-	console.log(countedDays);
+class Info extends React.Component {
+render() {
+	const { requests, collapsibleId, handleCollapsible, currentDay, handleOption } = this.props;
+
 	return(
 		<React.Fragment>
 			<Header/>
@@ -41,11 +16,14 @@ const Info = props => {
 				<ul className="options_list">
 					<li className="option_scheduled" id="scheduled" onClick={handleOption}>scheduled</li>
 					<li className="option_past" id="past" onClick={handleOption}>past</li>
-					<li className="option_requests" id="requested" onClick={handleOption}>requests</li>
+					<li className="option_requests" id="requests" onClick={handleOption}>requests</li>
 				</ul>
-				<p>{`${countedDays} days ${option}`}</p>
 				<ul className="info_list">
-					{filteredRequests
+					<p>{`5 days  `}</p>
+					{requests
+					.filter(collapsible => collapsible.status === 'approved' && moment(collapsible.endDate).format('DD-MM-YYYY') <= currentDay)
+					.filter(collapsible => collapsible.status !== 'approved')
+					.filter(collapsible => collapsible.status === 'approved' &&  moment(collapsible.endDate).format('DD-MM-YYYY') <= currentDay)
 					.map(collapsible => {
 						return (
 							<li className="info_collapsible" key={collapsible._id}>
@@ -76,7 +54,7 @@ const Info = props => {
 		</React.Fragment>
 	);
 }
-
+}
 
 Info.propTypes = {
 	requests: PropTypes.arrayOf(PropTypes.object), 
