@@ -1,10 +1,12 @@
 @import 'core/variables';
+@import 'components/error';
 @import 'components/login';
 @import 'components/profile';
 @import 'components/info';
 @import 'components/header';
 @import 'components/date';
 @import 'components/newRequest';
+
 
 .app {
   text-align: center;
@@ -29,3 +31,4 @@
 .App-link {
   color: #09d3ac;
 }
+

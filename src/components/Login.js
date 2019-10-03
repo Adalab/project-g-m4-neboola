@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Login = props => {
 	const domain = '@neboola.co';
-	const {email, getEmail, getFetch} = props;
+	const {email, getEmail, getFetch, error} = props;
 
 	return(
 		<div className="login_container">
@@ -23,6 +23,7 @@ const Login = props => {
 						value={email}
             placeholder="Email"/>
         </label>
+        <p className={`hidden  ${error === true ? 'message_error' : ''}`}>Error:[caption]</p>
         </form>
 	       <Link to={email.toLowerCase().includes(domain.toLowerCase()) 
 					? '/profile' : '/'}  
@@ -34,7 +35,10 @@ const Login = props => {
           />
         </Link>
 
-		    <Error/>
+		    <Error 
+        email={email}
+        domain={domain}
+        error={error}/>
       </main>
 		</div>
 
