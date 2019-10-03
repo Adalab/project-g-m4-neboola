@@ -39,7 +39,8 @@ class App extends React.Component {
     this.handleCollapsible = this.handleCollapsible.bind(this);
     this.getWeekends = this.getWeekends.bind(this);
 		this.handleOption = this.handleOption.bind(this);
-		this.removeRequest = this.removeRequest.bind(this);
+    this.removeRequest = this.removeRequest.bind(this);
+    this.promptDelete = this.promptDelete.bind(this);
   }
   
   componentDidMount(){
@@ -251,6 +252,13 @@ class App extends React.Component {
 		});
 	} 
 
+  promptDelete(event){
+    let alertReturn = window.confirm('Do you want to delete this request?');
+    if (alertReturn) {
+      this.removeRequest(event);
+    }
+  }
+
 	removeRequest(event) {
 		const desiredRequest = event.currentTarget.id;
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests/';
@@ -325,7 +333,8 @@ class App extends React.Component {
 								currentDay={currentDay}
 								option={option}
 								handleOption={this.handleOption}
-								removeRequest={this.removeRequest}
+                removeRequest={this.removeRequest}
+                promptDelete={this.promptDelete}
 							/>
 						);
 						}
