@@ -1,6 +1,7 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import rightArrow from './../images/right-arrow.png';
+import moment from 'moment';
 
 
 const Date = props => {
@@ -25,11 +26,13 @@ const Date = props => {
       </div>
     </div>
 		</React.Fragment>
-
 	);
 }
 
 Date.propTypes = {
-
+  getDate: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  currentDay:PropTypes.string.isRequired,
 }
 export default Date;

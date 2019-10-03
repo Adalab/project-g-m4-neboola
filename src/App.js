@@ -5,7 +5,7 @@ import Profile from './components/Profile';
 import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
-import moment from 'moment'
+import moment from 'moment';
 
 
 class App extends React.Component {
@@ -23,7 +23,9 @@ class App extends React.Component {
 			collapsibleId: '',
       requests: [],
       error: false,
-			option: 'scheduled'
+      option: 'scheduled',
+      errorNewRequest: false,
+      successNewRequest:false
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -38,12 +40,12 @@ class App extends React.Component {
     this.handleCollapsible = this.handleCollapsible.bind(this);
     this.getWeekends = this.getWeekends.bind(this);
 		this.handleOption = this.handleOption.bind(this);
+		this.removeRequest = this.removeRequest.bind(this);
   }
   
   componentDidMount(){
     this.getUser()
     this.getCurrentDate()
-    this.fetchRequest()
   }
 
   getUser(){
@@ -55,7 +57,8 @@ class App extends React.Component {
         startDate:ls.startDate,
         endDate:ls.endDate,
         comment:ls.comment,
-        countDays: ls.countDays
+        countDays: ls.countDays,
+				requests: ls.requests
       })
     }
   }
@@ -96,7 +99,8 @@ class App extends React.Component {
 	getEmail(event) {
 		const newEmail = event.currentTarget.value;
 		this.setState({
-			email: newEmail
+      email: newEmail,
+      error:false
 		},() => {localStorage.setItem('User', JSON.stringify(this.state))});
 	}
 
@@ -108,19 +112,19 @@ class App extends React.Component {
         error: true
       })
     }
-    
+    console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
     .then(data =>  
       this.setState({
       data: data
-    },
-    () => {
-      localStorage.setItem('User', JSON.stringify(this.state))
+    },() => {
+      localStorage.setItem('User', JSON.stringify(this.state));
+      console.log(this.state.data)
     }
-    
     ))
     .catch(error => { console.log(error)});
+		this.fetchRequest();
   }
 
 	fetchRequest(){
@@ -128,10 +132,14 @@ class App extends React.Component {
 		console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response => response.json())
-		.then(data => {
+		.then(newRequest => {
       this.setState ({
-        requests: data
-      })
+        requests: newRequest
+      	},
+				() => {
+      		localStorage.setItem('User', JSON.stringify(this.state))
+    		}
+			)
 		})
 	}
 
@@ -148,7 +156,10 @@ class App extends React.Component {
 			collapsibleId: '',
       requests: [],
 			option: 'scheduled',
-			error: false
+      error: false,
+      errorNewRequest: false,
+      successNewRequest:false
+      
     })
   }
   handleCreateRequest(){
@@ -173,7 +184,13 @@ class App extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({
+          startDate:'',
+          endDate:'',
+          comment:''
+        });
+        console.log(data)})
   }
 
   getDate(event){
@@ -181,7 +198,9 @@ class App extends React.Component {
     const nameDateState =event.currentTarget.name;
     //this.getCountDays();
     this.setState({
-      [nameDateState]:dateInput
+      [nameDateState]:dateInput,
+      errorNewRequest: false,
+      successNewRequest:false
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state))
     });
@@ -191,7 +210,7 @@ class App extends React.Component {
     const startDate = new moment(this.state.startDate);
     const endDate = new moment(this.state.endDate);
     const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
-    console.log("pre " + duration)
+    console.log( duration)
     this.setState({
       countDays:duration
     },() => {
@@ -218,7 +237,19 @@ class App extends React.Component {
     },
     () => {
       localStorage.setItem('User', JSON.stringify(this.state));
-      this.postFetch();
+      if((this.state.countDays<=0 || isNaN(this.state.countDays)) ||(this.state.data.remainingDays<this.state.countDays)){
+        this.setState({
+          errorNewRequest: true,
+          successNewRequest: false
+        })
+      }else{
+        this.setState({
+          errorNewRequest: false,
+          successNewRequest: true
+        })
+        this.postFetch();
+        console.log('se hizo el post')
+      }
     })
   }
 
@@ -229,9 +260,22 @@ class App extends React.Component {
 		});
 	} 
 
+	removeRequest(event) {
+		const desiredRequest = event.currentTarget.id;
+		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests/';
+		console.log(ENDPOINT + desiredRequest);
+		fetch(ENDPOINT + desiredRequest	, {
+			method: 'DELETE',
+			headers: {'Content-Type': 'application/json'}
+		})
+		.then(response => response.json())
+		.then(data => this.getFetch())
+	}
+
   render() {
 		const {email, data, startDate, endDate, currentDay, 
-					comment, requests, collapsibleId, option, error} = this.state;
+					comment, requests, collapsibleId, option, error, errorNewRequest,
+          successNewRequest} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -272,6 +316,8 @@ class App extends React.Component {
                 comment ={comment}
                 handleCreateRequest={this.handleCreateRequest}
                 deleteLS={this.deleteLS}
+                errorNewRequest={errorNewRequest}
+                successNewRequest={successNewRequest}
 							/>
 						);
 						}
@@ -289,6 +335,7 @@ class App extends React.Component {
 								currentDay={currentDay}
 								option={option}
 								handleOption={this.handleOption}
+								removeRequest={this.removeRequest}
 							/>
 						);
 						}
