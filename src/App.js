@@ -42,7 +42,6 @@ class App extends React.Component {
   componentDidMount(){
     this.getUser()
     this.getCurrentDate()
-    this.fetchRequest()
   }
 
   getUser(){
@@ -54,7 +53,8 @@ class App extends React.Component {
         startDate:ls.startDate,
         endDate:ls.endDate,
         comment:ls.comment,
-        countDays: ls.countDays
+        countDays: ls.countDays,
+				requests: ls.requests
       })
     }
   }
@@ -107,7 +107,7 @@ class App extends React.Component {
         error: true
       })
     }
-    
+    console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
     .then(data =>  
@@ -120,6 +120,7 @@ class App extends React.Component {
     
     ))
     .catch(error => { console.log(error)});
+		this.fetchRequest();
   }
 
 	fetchRequest(){
@@ -127,10 +128,14 @@ class App extends React.Component {
 		console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response => response.json())
-		.then(data => {
+		.then(newRequest => {
       this.setState ({
-        requests: data
-      })
+        requests: newRequest
+      	},
+				() => {
+      		localStorage.setItem('User', JSON.stringify(this.state))
+    		}
+			)
 		})
 	}
 
