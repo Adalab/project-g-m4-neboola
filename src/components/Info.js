@@ -30,6 +30,7 @@ const Info = props => {
 		default:
 				filteredRequests = requests;
 	}				
+	
 	return(
 		<React.Fragment>
 			<Header/>
