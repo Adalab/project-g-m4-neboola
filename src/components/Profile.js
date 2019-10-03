@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import Info from './Info';
-//import NewRequest from './NewRequest';
 import logout from './../images/logout.png';
 import profile from './../images/profile.png';
 import umbrella from './../images/umbrella.png';

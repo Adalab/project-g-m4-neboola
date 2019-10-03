@@ -1,9 +1,9 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import errorIcon from './../images/error.png';
 
 const Error = props => {
-	const { errorNewRequest} = props;
+	const {errorNewRequest} = props;
 	return(
 		<React.Fragment>
       <div  className={`hidden container_error ${errorNewRequest === true ? 'text_error' : ''}`}>
@@ -16,7 +16,7 @@ const Error = props => {
 }
 
 Error.propTypes = {
-
+	errorNewRequest: PropTypes.bool.isRequired
 }
 
 export default Error;

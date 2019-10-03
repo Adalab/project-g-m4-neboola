@@ -1,9 +1,9 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import succesIcon from './../images/check.png';
 
 const Error = props => {
-	const { successNewRequest} = props;
+	const {successNewRequest} = props;
 	return(
 		<React.Fragment>
       <div  className={`hidden container_success ${successNewRequest === true ? 'text_success' : ''}`}>
@@ -16,7 +16,7 @@ const Error = props => {
 }
 
 Error.propTypes = {
-
+	successNewRequest: PropTypes.bool.isRequired
 }
 
 export default Error;
