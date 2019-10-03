@@ -6,8 +6,8 @@ import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
 import moment from 'moment'
-import { thisExpression } from '@babel/types';
-import business from 'moment-business'
+/* import { thisExpression } from '@babel/types';
+import business from 'moment-business' */
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +23,8 @@ class App extends React.Component {
       countDays: 0,
 			collapsibleId: '',
       requests: [],
-      error: false
+      error: false,
+			option: 'scheduled'
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -37,8 +38,9 @@ class App extends React.Component {
     this.postFetch =this.postFetch.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
     this.getWeekends = this.getWeekends.bind(this);
-    
+		this.handleOption = this.handleOption.bind(this);
   }
+  
   componentDidMount(){
     this.getUser()
     this.getCurrentDate()
@@ -71,7 +73,6 @@ class App extends React.Component {
       month ='0'+ month
     }
     const currentDay=year + '-' + month + '-'+ day;
-    console.log(currentDay)
     this.setState({
       currentDay:currentDay
     },() => {localStorage.setItem('User', JSON.stringify(this.state))})
@@ -125,12 +126,14 @@ class App extends React.Component {
 
 	fetchRequest(){
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests?owner=';
+		console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response => response.json())
 		.then(data => {
       this.setState ({
         requests: data
       })
+      }
 		})
 	}
 
@@ -146,14 +149,13 @@ class App extends React.Component {
       countDays: 0,
 			collapsibleId: '',
       requests: [],
+			option: 'scheduled'
     })
   }
   handleCreateRequest(){
-    console.log('holaa si entre ')
     this.getCountDays();
-   
-
   }
+
   postFetch(){
     const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests';
     const user = {
@@ -164,7 +166,6 @@ class App extends React.Component {
 	    status: "pending",
 	    userComments: this.state.comment
     }
-    console.log(user)
     fetch (ENDPOINT, {
         method: 'POST', 
         body : JSON.stringify(user), 
@@ -174,8 +175,8 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(data => console.log(data))
-    
   }
+
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
@@ -191,6 +192,7 @@ class App extends React.Component {
     const startDate = new moment(this.state.startDate);
     const endDate = new moment(this.state.endDate);
     const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
+    console.log("pre " + duration)
     this.setState({
       countDays:duration
     },() => {
@@ -201,16 +203,15 @@ class App extends React.Component {
   }
 
   getWeekends () {
-    let pivotDate = this.state.startDate
+    let pivotDate = moment(this.state.startDate)
     let counter = 0;
-    for( let i = 0 ; i <= this.state.countDays; i++) {
-      
-      if(moment().isoWeekday(pivotDate) > 5 ) {
+    for( let i = 0 ; i < this.state.countDays; i++) {
+      if(pivotDate.day() === 6 || pivotDate.day() === 0 ) {
         counter++
-        console.log('hola entre')
+        console.log('finde')
       }
-      console.log(pivotDate)
-      pivotDate = moment.duration(1, 'd').add(pivotDate)
+      console.log(pivotDate.day())
+      pivotDate = pivotDate.add(1, 'days')
     }
     const newCountDays = this.state.countDays - counter;
     this.setState({
@@ -220,11 +221,18 @@ class App extends React.Component {
       localStorage.setItem('User', JSON.stringify(this.state));
       this.postFetch();
     })
- 
   }
 
+	handleOption(event) {
+		const newOption = event.currentTarget.id;
+		this.setState({
+			option: newOption
+		});
+	} 
+
   render() {
-		const {email, data, startDate, endDate, currentDay, comment, requests, collapsibleId, error} = this.state;
+		const {email, data, startDate, endDate, currentDay, 
+					comment, requests, collapsibleId, option, error} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -264,6 +272,7 @@ class App extends React.Component {
                 currentDay={currentDay}
                 comment ={comment}
                 handleCreateRequest={this.handleCreateRequest}
+                deleteLS={this.deleteLS}
 							/>
 						);
 						}
@@ -278,6 +287,9 @@ class App extends React.Component {
 								collapsibleId={collapsibleId}
 								requests={requests}
 								fetchRequest={this.fetchRequest}
+								currentDay={currentDay}
+								option={option}
+								handleOption={this.handleOption}
 							/>
 						);
 						}
