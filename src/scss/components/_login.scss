@@ -30,7 +30,7 @@ padding-top:40px;
 
 .main_title {
   color: $color-light;
-  
+  font-size: 36px;
 }
 
 .input_mail {
@@ -43,6 +43,9 @@ padding-top:40px;
   font-size: 18px;
   box-sizing: border-box;
   padding-left: 25px;
+  @media all and (min-width:768px) {
+    width: 360px;
+  }
 }
 .input_mail::placeholder { 
   color: $color-dark;
@@ -62,6 +65,9 @@ padding-top:40px;
   margin: 0 auto;
   color: $color-light;
   font-size: 18px;
+  @media all and (min-width:768px) {
+    width: 360px;
+  }
 }
 .message_error{
   display: block;
