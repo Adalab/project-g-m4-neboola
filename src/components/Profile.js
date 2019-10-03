@@ -20,16 +20,20 @@ const Profile = props => {
       </header>
       <main className="prof_main">
         <div className="prof_container">
+          <div className="prof_user-container">
           <img src={profile} alt="" className="prof_img"/>
+          <div className="prof_name-and-mail">
           <h2 className="prof_user-name">Judith Elliott</h2>
           <p className="prof_mail">{data.email}</p>
+          </div>
+          </div>
           <Link to="/profile/new-request" className="link newrequest_link">
             <p className="newrequest_link_text">Request free time</p>
           </Link>
         </div>
         <div className="info_container-nav">
           <Link to="/profile/info" className="link info_link">
-            <div className="prof-info_container">
+            <div className="prof-info_container margin-right">
             <div className="prof_icon-container">
               <img className="prof_icon" src={umbrella} alt="Umbrella icon"></img>
             </div>
@@ -39,7 +43,7 @@ const Profile = props => {
           </Link>
           
           <Link to="/profile/info" className="link info_link">
-            <div className="prof-info_container">
+            <div className="prof-info_container margin-left">
               <div className="prof_icon-container">
                 <img className="prof_icon" src={check} alt="Check icon"></img>
               </div>
