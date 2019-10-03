@@ -88,6 +88,6 @@ Info.propTypes = {
 	currentDay: PropTypes.string.isRequired,
 	handleOption: PropTypes.func.isRequired,
 	removeRequest: PropTypes.func.isRequired,
-  option: PropTypes.func.isRequired
+  option: PropTypes.string.isRequired
 }
 export default Info;
