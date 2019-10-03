@@ -5,7 +5,7 @@ import Profile from './components/Profile';
 import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
-import moment from 'moment'
+import moment from 'moment';
 
 class App extends React.Component {
   constructor(props) {
