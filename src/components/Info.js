@@ -30,10 +30,6 @@ const Info = props => {
 		default:
 				filteredRequests = requests;
 	}				
-	console.log(filteredRequests);
-	console.log(mappedRequests);
-	console.log(countedDays);
-
 	return(
 		<React.Fragment>
 			<Header/>

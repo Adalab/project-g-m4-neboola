@@ -111,7 +111,6 @@ class App extends React.Component {
         error: true
       })
     }
-    console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
     .then(data =>  
@@ -119,7 +118,6 @@ class App extends React.Component {
       data: data
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state));
-      console.log(this.state.data)
     }
     ))
     .catch(error => { console.log(error)});
@@ -128,7 +126,6 @@ class App extends React.Component {
 
 	fetchRequest(){
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests?owner=';
-		console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response => response.json())
 		.then(newRequest => {
@@ -188,8 +185,8 @@ class App extends React.Component {
           startDate:'',
           endDate:'',
           comment:''
-        });
-        console.log(data)})
+        })
+			})
   }
 
   getDate(event){
@@ -209,13 +206,11 @@ class App extends React.Component {
     const startDate = new moment(this.state.startDate);
     const endDate = new moment(this.state.endDate);
     const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
-    console.log( duration)
     this.setState({
       countDays:duration
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state));
       this.getWeekends();
-      //console.log(this.state.countDays);
     })
   }
 
@@ -225,9 +220,7 @@ class App extends React.Component {
     for( let i = 0 ; i < this.state.countDays; i++) {
       if(pivotDate.day() === 6 || pivotDate.day() === 0 ) {
         counter++
-        console.log('finde')
       }
-      console.log(pivotDate.day())
       pivotDate = pivotDate.add(1, 'days')
     }
     const newCountDays = this.state.countDays - counter;
@@ -247,7 +240,6 @@ class App extends React.Component {
           successNewRequest: true
         })
         this.postFetch();
-        console.log('se hizo el post')
       }
     })
   }
@@ -262,7 +254,6 @@ class App extends React.Component {
 	removeRequest(event) {
 		const desiredRequest = event.currentTarget.id;
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests/';
-		console.log(ENDPOINT + desiredRequest);
 		fetch(ENDPOINT + desiredRequest	, {
 			method: 'DELETE',
 			headers: {'Content-Type': 'application/json'}
