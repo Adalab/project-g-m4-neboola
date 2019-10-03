@@ -7,7 +7,7 @@ import moment from "moment";
 const Info = props => {
   
 	const { requests, collapsibleId, handleCollapsible, 
-					currentDay, handleOption, option, deleteRequest } = props;
+					currentDay, handleOption, option, removeRequest } = props;
 	let filteredRequests = [];
 	let mappedRequests = [];
 	let countedDays = 0;
@@ -65,8 +65,9 @@ const Info = props => {
 											<p className="date"> {moment(collapsible.endDate).format('DD MMM YYYY')}</p>
 										</div>
 										<button type="button" 
-											className={`delete-btn ${option === 'requested' ? '' : 'hidden'}`} 
-											onClick={deleteRequest}>
+											className={`delete-btn ${option === 'requested' ? '' : 'hidden'}`}
+											id={collapsible._id} 
+											onClick={removeRequest}>
 											delete request
 										 </button>
 									</div>
@@ -81,11 +82,11 @@ const Info = props => {
 
 
 Info.propTypes = {
-	requests: PropTypes.arrayOf(PropTypes.object), 
-	collapsibleId: PropTypes.string, 
-	handleCollapsible: PropTypes.func, 
-	currentDay: PropTypes.string,
-	handleOption: PropTypes.func,
-	removeRequest: PropTypes.func
+	requests: PropTypes.arrayOf(PropTypes.object).isRequired, 
+	collapsibleId: PropTypes.string.isRequired, 
+	handleCollapsible: PropTypes.func.isRequired, 
+	currentDay: PropTypes.string.isRequired,
+	handleOption: PropTypes.func.isRequired,
+	removeRequest: PropTypes.func.isRequired
 }
 export default Info;

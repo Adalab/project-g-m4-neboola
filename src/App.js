@@ -236,7 +236,14 @@ class App extends React.Component {
 
 	removeRequest(event) {
 		const desiredRequest = event.currentTarget.id;
-		console.log(desiredRequest);
+		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests/';
+		console.log(ENDPOINT + desiredRequest);
+		fetch(ENDPOINT + desiredRequest	, {
+			method: 'DELETE',
+			headers: {'Content-Type': 'application/json'}
+		})
+		.then(response => response.json())
+		.then(data => this.getFetch())
 	}
 
   render() {
