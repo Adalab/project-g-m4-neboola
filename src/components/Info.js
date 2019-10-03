@@ -9,7 +9,8 @@ import checkBlack from '../images/check-black.png';
 const Info = props => {
   
   const { requests, collapsibleId, handleCollapsible, currentDay, 
-         handleOption, option, promptDelete } = props;
+         handleOption, option, promptDelete, tabSelect} = props;
+				 
 	let filteredRequests = [];
 	let mappedRequests = [];
 	let countedDays = 0;
@@ -38,9 +39,9 @@ const Info = props => {
 			<Header/>
 				<h2 className="info_title">request time</h2>
 				<ul className="options_list">
-					<li className={`option ${option === 'scheduled' ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>
-					<li className={`option ${option === 'past' ? 'selected-option' : ''}`} id="past" onClick={handleOption}>past</li>
-					<li className={`option ${option === 'requested' ? 'selected-option' : ''}`} id="requested" onClick={handleOption}>requests</li>
+					<li className={`option ${tabSelect === 'scheduled' ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>
+					<li className={`option ${tabSelect === 'past' ? 'selected-option' : ''}`} id="past" onClick={handleOption}>past</li>
+					<li className={`option ${tabSelect === 'requested' ? 'selected-option' : ''}`} id="requested" onClick={handleOption}>requests</li>
 				</ul>
 				<p>{`${countedDays} days ${option}`}</p>
 				<ul className="info_list">
@@ -88,12 +89,12 @@ const Info = props => {
 
 Info.propTypes = {
 	requests: PropTypes.arrayOf(PropTypes.object).isRequired, 
-	collapsibleId: PropTypes.string.isRequired, 
+	collapsibleId: PropTypes.string, 
 	handleCollapsible: PropTypes.func.isRequired, 
 	currentDay: PropTypes.string.isRequired,
 	handleOption: PropTypes.func.isRequired,
 	promptDelete: PropTypes.func.isRequired,
-  option: PropTypes.string.isRequired
-
+  option: PropTypes.string.isRequired,
+	tabSelect: PropTypes.string
 }
 export default Info;

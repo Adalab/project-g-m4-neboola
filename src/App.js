@@ -24,7 +24,8 @@ class App extends React.Component {
       error: false,
       option: 'scheduled',
       errorNewRequest: false,
-      successNewRequest:false
+      successNewRequest:false, 
+      tabSelect: 'scheduled'
 		}
 
 		this.getEmail = this.getEmail.bind(this);
