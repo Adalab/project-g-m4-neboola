@@ -24,4 +24,5 @@ const Header = props => {
 Header.propTypes = {
 	deleteLS: PropTypes.func
 }
+
 export default Header;
