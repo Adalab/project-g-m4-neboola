@@ -1,6 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 import rightArrow from './../images/right-arrow.png';
+import moment from 'moment';
 
 
 const Date = props => {

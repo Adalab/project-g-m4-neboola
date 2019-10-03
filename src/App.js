@@ -5,7 +5,7 @@ import Profile from './components/Profile';
 import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
-import moment from 'moment'
+import moment from 'moment';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +22,9 @@ class App extends React.Component {
 			collapsibleId: '',
       requests: [],
       error: false,
-			option: 'scheduled'
+      option: 'scheduled',
+      errorNewRequest: false,
+      successNewRequest:false
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -96,7 +98,8 @@ class App extends React.Component {
 	getEmail(event) {
 		const newEmail = event.currentTarget.value;
 		this.setState({
-			email: newEmail
+      email: newEmail,
+      error:false
 		},() => {localStorage.setItem('User', JSON.stringify(this.state))});
 	}
 
@@ -114,11 +117,10 @@ class App extends React.Component {
     .then(data =>  
       this.setState({
       data: data
-    },
-    () => {
-      localStorage.setItem('User', JSON.stringify(this.state))
+    },() => {
+      localStorage.setItem('User', JSON.stringify(this.state));
+      console.log(this.state.data)
     }
-    
     ))
     .catch(error => { console.log(error)});
 		this.fetchRequest();
@@ -153,7 +155,10 @@ class App extends React.Component {
 			collapsibleId: '',
       requests: [],
 			option: 'scheduled',
-			error: false
+      error: false,
+      errorNewRequest: false,
+      successNewRequest:false
+      
     })
   }
   handleCreateRequest(){
@@ -178,7 +183,13 @@ class App extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({
+          startDate:'',
+          endDate:'',
+          comment:''
+        });
+        console.log(data)})
   }
 
   getDate(event){
@@ -186,7 +197,9 @@ class App extends React.Component {
     const nameDateState =event.currentTarget.name;
     //this.getCountDays();
     this.setState({
-      [nameDateState]:dateInput
+      [nameDateState]:dateInput,
+      errorNewRequest: false,
+      successNewRequest:false
     },() => {
       localStorage.setItem('User', JSON.stringify(this.state))
     });
@@ -196,7 +209,7 @@ class App extends React.Component {
     const startDate = new moment(this.state.startDate);
     const endDate = new moment(this.state.endDate);
     const  duration = moment.duration(endDate.diff(startDate)).days() + 1;
-    console.log("pre " + duration)
+    console.log( duration)
     this.setState({
       countDays:duration
     },() => {
@@ -223,7 +236,19 @@ class App extends React.Component {
     },
     () => {
       localStorage.setItem('User', JSON.stringify(this.state));
-      this.postFetch();
+      if((this.state.countDays<=0 || isNaN(this.state.countDays)) ||(this.state.data.remainingDays<this.state.countDays)){
+        this.setState({
+          errorNewRequest: true,
+          successNewRequest: false
+        })
+      }else{
+        this.setState({
+          errorNewRequest: false,
+          successNewRequest: true
+        })
+        this.postFetch();
+        console.log('se hizo el post')
+      }
     })
   }
 
@@ -248,7 +273,8 @@ class App extends React.Component {
 
   render() {
 		const {email, data, startDate, endDate, currentDay, 
-					comment, requests, collapsibleId, option, error} = this.state;
+					comment, requests, collapsibleId, option, error, errorNewRequest,
+          successNewRequest} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -289,6 +315,8 @@ class App extends React.Component {
                 comment ={comment}
                 handleCreateRequest={this.handleCreateRequest}
                 deleteLS={this.deleteLS}
+                errorNewRequest={errorNewRequest}
+                successNewRequest={successNewRequest}
 							/>
 						);
 						}
