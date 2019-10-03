@@ -6,8 +6,8 @@ import Info from './components/Info';
 import NewRequest from './components/NewRequest';
 import './scss/App.scss';
 import moment from 'moment'
-import { thisExpression } from '@babel/types';
-import business from 'moment-business'
+/* import { thisExpression } from '@babel/types';
+import business from 'moment-business' */
 
 class App extends React.Component {
   constructor(props) {
@@ -118,6 +118,7 @@ class App extends React.Component {
 
 	fetchRequest(){
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests?owner=';
+		console.log(ENDPOINT + this.state.email)
 		fetch(ENDPOINT + this.state.email)
 		.then(response => response.json())
 		.then(data => {
