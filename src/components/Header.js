@@ -22,6 +22,6 @@ const Header = props => {
 }
 
 Header.propTypes = {
-	deleteLS: PropTypes.func.isRequired
+	deleteLS: PropTypes.func
 }
 export default Header;
