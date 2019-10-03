@@ -7,7 +7,7 @@ import moment from "moment";
 const Info = props => {
   
   const { requests, collapsibleId, handleCollapsible, currentDay, 
-         handleOption, option, removeRequest } = props;
+         handleOption, option, promptDelete } = props;
 	let filteredRequests = [];
 	let mappedRequests = [];
 	let countedDays = 0;
@@ -64,7 +64,7 @@ const Info = props => {
 										<button type="button" 
 											className={`delete-btn ${option === 'requested' ? '' : 'hidden'}`}
 											id={collapsible._id} 
-											onClick={removeRequest}>
+											onClick={promptDelete}>
 											delete request
 										 </button>
 									</div>
@@ -84,7 +84,8 @@ Info.propTypes = {
 	handleCollapsible: PropTypes.func.isRequired, 
 	currentDay: PropTypes.string.isRequired,
 	handleOption: PropTypes.func.isRequired,
-	removeRequest: PropTypes.func.isRequired,
+	promptDelete: PropTypes.func.isRequired,
   option: PropTypes.string.isRequired
+
 }
 export default Info;
