@@ -28,7 +28,7 @@ const Date = props => {
 }
 
 Date.propTypes = {
-  getDate: PropTypes.string.isRequired,
+  getDate: PropTypes.func.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   currentDay:PropTypes.string.isRequired,

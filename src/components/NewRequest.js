@@ -29,16 +29,15 @@ const NewRequest = props => {
       successNewRequest={successNewRequest}
       />
 		</React.Fragment>
-
 	);
 }
 
 NewRequest.propTypes = {
-   getDate: PropTypes.string.isRequired,
+   getDate: PropTypes.func.isRequired,
    startDate: PropTypes.string.isRequired,
    endDate: PropTypes.string.isRequired,
    currentDay:PropTypes.string.isRequired,
-   commet: PropTypes.string.isRequired,
+   comment: PropTypes.string.isRequired,
    handleCreateRequest: PropTypes.func.isRequired,
    deleteLS: PropTypes.func.isRequired
 }
