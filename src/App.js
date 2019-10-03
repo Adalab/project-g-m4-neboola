@@ -37,6 +37,7 @@ class App extends React.Component {
     this.handleCollapsible = this.handleCollapsible.bind(this);
     this.getWeekends = this.getWeekends.bind(this);
 		this.handleOption = this.handleOption.bind(this);
+		this.removeRequest = this.removeRequest.bind(this);
   }
   
   componentDidMount(){
@@ -233,6 +234,11 @@ class App extends React.Component {
 		});
 	} 
 
+	removeRequest(event) {
+		const desiredRequest = event.currentTarget.id;
+		console.log(desiredRequest);
+	}
+
   render() {
 		const {email, data, startDate, endDate, currentDay, 
 					comment, requests, collapsibleId, option, error} = this.state;
@@ -293,6 +299,7 @@ class App extends React.Component {
 								currentDay={currentDay}
 								option={option}
 								handleOption={this.handleOption}
+								removeRequest={this.removeRequest}
 							/>
 						);
 						}
