@@ -20,7 +20,8 @@ class App extends React.Component {
       comment:'',
       countDays: 0,
 			collapsibleId: '',
-			requests: []
+			requests: [],
+			option: 'scheduled'
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -33,6 +34,7 @@ class App extends React.Component {
     this.handleCreateRequest = this.handleCreateRequest.bind(this);
     this.postFetch =this.postFetch.bind(this);
     this.handleCollapsible = this.handleCollapsible.bind(this);
+		this.handleOption = this.handleOption.bind(this);
     
   }
   componentDidMount(){
@@ -67,7 +69,6 @@ class App extends React.Component {
       month ='0'+ month
     }
     const currentDay=year + '-' + month + '-'+ day;
-    console.log(currentDay)
     this.setState({
       currentDay:currentDay
     },() => {localStorage.setItem('User', JSON.stringify(this.state))})
@@ -98,7 +99,6 @@ class App extends React.Component {
 
 	getFetch() {
 		const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/users/';
-		console.log(ENDPOINT + this.state.email);
 		fetch(ENDPOINT + this.state.email)
 		.then(response =>response.json())
     .then(data =>  
@@ -120,8 +120,7 @@ class App extends React.Component {
 		.then(data => {
       this.setState ({
         requests: data
-
-      })
+      }, console.log(data))
 		})
 	}
 
@@ -136,15 +135,14 @@ class App extends React.Component {
       comment:'',
       countDays: 0,
 			collapsibleId: '',
-			requests: []
+			requests: [],
+			option: 'scheduled'
     })
   }
   handleCreateRequest(){
-    console.log('holaa si entre ')
     this.getCountDays();
-   
-
   }
+
   postFetch(){
     const ENDPOINT = 'https://neboola-holidays-api.herokuapp.com/open/requests';
     const user = {
@@ -155,7 +153,6 @@ class App extends React.Component {
 	    status: "pending",
 	    userComments: this.state.comment
     }
-    console.log(user)
     fetch (ENDPOINT, {
         method: 'POST', 
         body : JSON.stringify(user), 
@@ -165,9 +162,8 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(data => console.log(data))
-    
-    
   }
+
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
@@ -189,10 +185,18 @@ class App extends React.Component {
       localStorage.setItem('User', JSON.stringify(this.state));
       this.postFetch();
     })
-  }
+  }	
+
+	handleOption(event) {
+		const newOption = event.currentTarget.id;
+		this.setState({
+			option: newOption
+		});
+	} 
 
   render() {
-		const {email, data, startDate, endDate, currentDay, comment, requests, collapsibleId} = this.state;
+		const {email, data, startDate, endDate, currentDay, 
+					comment, requests, collapsibleId, option} = this.state;
     return (
       <div className="app">
         <Switch>
@@ -245,6 +249,9 @@ class App extends React.Component {
 								collapsibleId={collapsibleId}
 								requests={requests}
 								fetchRequest={this.fetchRequest}
+								currentDay={currentDay}
+								option={option}
+								handleOption={this.handleOption}
 							/>
 						);
 						}
