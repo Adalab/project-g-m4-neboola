@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import moment from "moment";
+import arrow from '../images/right-arrow.png';
+import checkBlack from '../images/check-black.png';
 
 
 const Info = props => {
@@ -36,7 +38,9 @@ const Info = props => {
 	return(
 		<React.Fragment>
 			<Header/>
+        
 				<h2 className="info_title">request time</h2>
+        {/* <div className="container_request"> */}
 				<ul className="options_list">
 					<li className="option_scheduled" id="scheduled" onClick={handleOption}>scheduled</li>
 					<li className="option_past" id="past" onClick={handleOption}>past</li>
@@ -51,7 +55,7 @@ const Info = props => {
 								<div id={collapsible._id} className={`collapsible_container ${collapsibleId === collapsible._id ? 'open' : '' }`}>
 									<div className="box_visible" onClick={handleCollapsible} data-id={collapsible._id}>
 										
-										<img className="collapsible_icon" src="" alt=""/>
+										<img className="collapsible_icon" src={checkBlack} alt="icono check"/>
 										<p className="create_date">{moment(collapsible.createdAt).format('DD/MM/YYYY')}</p> 
 										<p className="create_count">{collapsible.daysCount} days</p> 
 									</div>
@@ -61,7 +65,7 @@ const Info = props => {
 											<p className=" text text-from">from</p>
 											<p className="date">{moment(collapsible.startDate).format('DD MMM YYYY')} </p>
 										</div>
-
+                    <img className="right-arrow" src={arrow} alt="flecha hacia la derecha"/>
 										<div className="date_container end">
 											<p className=" text text-to">to</p>
 											<p className="date"> {moment(collapsible.endDate).format('DD MMM YYYY')}</p>
@@ -72,6 +76,7 @@ const Info = props => {
 						)
 					})}
 				</ul>
+        {/* </div> */}
 		</React.Fragment>
 	);
 }

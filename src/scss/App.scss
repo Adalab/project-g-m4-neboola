@@ -1,11 +1,13 @@
 @import 'core/variables';
+@import 'components/info';
 @import 'components/error';
 @import 'components/login';
 @import 'components/profile';
-@import 'components/info';
+
 @import 'components/header';
 @import 'components/date';
 @import 'components/newRequest';
+
 
 
 .app {

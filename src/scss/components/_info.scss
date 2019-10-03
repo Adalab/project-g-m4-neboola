@@ -6,20 +6,77 @@
   
 }
 
-.collapsible_container{
+.info_title{
+  margin-left: 11px;
+  text-align: start;
+  font-size: 36px;
+  font-weight: bold;
+  color:$color-dark;
+}
+
+.collapsible_container {
   font-family: HelveticaNeue;
   font-size: 36px;
   font-weight: bold;
-
+  border: 1 solid rgba(0, 0, 0, 0.1);
 }
+
+
 
 .info_collapsible{
   list-style: none;
 }
 
-.info_list{
-  font-family: HelveticaNeue;
+.options_list{
+  margin: 0px;
+  padding: 0px;
+  border-radius: 4px;
+  list-style: none;
+  width: 354px;
+  height: 29px;
+  color: $blue-dark;
+  border: 1px solid $blue-dark;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.list_request{
+  width: 118px;
+  margin: 7.5px;
+}
+
+.info_list{
+  margin: 0px;
+  padding: 0px;
+  font-family: HelveticaNeue;
+}
+
+.boxes_date{
+  background-color:rebeccapurple;
+  display: flex;
+  justify-content: center;
+}
+
+.text-from{
+  text-align: right;
+  padding-right: 16px;
+}
+
+.text-to{
+  text-align: left;
+  padding-left: 16px;
+}
+
+.date_container{
+  // background-color: red;
+  width: 144px;
+}
+
+.right-arrow{
+  width: 16px;
+  height: 16px;
+  margin: 20px;
 }
 
 .create_date{
@@ -32,10 +89,12 @@
 
 .text{
   font-size: 13px;
+  margin: 16px 0 7px;
 }
 
 
 .date{
+  margin: 0;
   font-size: 18px;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.5);
@@ -43,5 +102,8 @@
   width: 144px;
   height: 42px;
   border-radius: 21px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
