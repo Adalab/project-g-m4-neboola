@@ -1,15 +1,21 @@
 .login_container {
   background-image: linear-gradient(352deg, $blue-light-midtone, $blue-dark-midtone);
-  min-height: 100vh;
-  padding-top: 40px;
+  height: 100vh;
+  min-height: 500px;
+  min-width: 308px;
   position: relative;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-// .app_header {
-
-// }
+.app_header {
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100vw;
+padding: 0 auto ;
+padding-top:40px;
+}
 .header_title {
   background-image: url(../../images/logo.svg);
   background-repeat: no-repeat;
@@ -18,28 +24,28 @@
   height: 1px;
   padding-top: 37.6px;
   overflow: hidden;
-  margin: 0;
+  margin: 0 auto;
+  min-width: 308px;
 }
-// .app_main {
 
-// }
 .main_title {
   color: $color-light;
-  
+  font-size: 36px;
 }
-// .label_login {
 
-// }
 .input_mail {
   border-radius: 22px;
   width: 308px;
   height: 45px;
   border: none;
-  margin-bottom: 17px;
+  margin-bottom: 8px;
   margin-top: 32px;
   font-size: 18px;
   box-sizing: border-box;
   padding-left: 25px;
+  @media all and (min-width:768px) {
+    width: 360px;
+  }
 }
 .input_mail::placeholder { 
   color: $color-dark;
@@ -57,8 +63,12 @@
   background-color: $blue-dark;
   border: none;
   margin: 0 auto;
+  margin-top: 8px;
   color: $color-light;
   font-size: 18px;
+  @media all and (min-width:768px) {
+    width: 360px;
+  }
 }
 .message_error{
   display: block;

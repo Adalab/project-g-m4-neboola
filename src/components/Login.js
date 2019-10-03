@@ -15,6 +15,7 @@ const Login = props => {
         </header>
 
       <main className="app_main">
+        <div className="app_input-and-login">
 		    <h2 className="main_title">Vacacioonero</h2>
         <form action="" className="form_login" id="login">
         <label htmlFor="input_mail" className="label_login">
@@ -35,6 +36,7 @@ const Login = props => {
             onClick={getFetch}
           />
         </Link>
+        </div>
 
 		    <Error 
         email={email}
