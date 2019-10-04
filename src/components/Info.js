@@ -4,6 +4,8 @@ import Header from './Header';
 import moment from 'moment';
 import arrow from '../images/right-arrow.png';
 import checkBlack from '../images/check-black.png';
+import rewind from '../images/rewind.png';
+import checkfull from '../images/checkfull.png';
 
 
 const Info = props => {
@@ -14,21 +16,25 @@ const Info = props => {
 	let filteredRequests = [];
 	let mappedRequests = [];
 	let countedDays = 0;
+	let icon = undefined;
 	switch(option){
 		case 'requested': 
 				filteredRequests = requests.filter(collapsible => collapsible.status !== 'approved');
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
+				icon = checkfull;
 				break;
 		case 'past':
 				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' &&  moment(collapsible.endDate).format('DD-MM-YYYY') <= currentDay);
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
+				icon = rewind;
 				break;
 		case 'scheduled':
 				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' && moment(collapsible.endDate).format('DD-MM-YYYY') >= currentDay);
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
+				icon = checkBlack;
 				break;
 		default:
 				filteredRequests = requests;
@@ -52,7 +58,7 @@ const Info = props => {
 								<div id={collapsible._id} className={`collapsible_container ${collapsibleId === collapsible._id ? 'open' : '' }`}>
 									<div className="box_request" onClick={handleCollapsible} data-id={collapsible._id}>
 									<div className="box_visible" >		
-										<img className="collapsible_icon" src={checkBlack} alt=""/>
+										<img className="collapsible_icon" src={icon} alt=""/>
 										<div className="box_create">
 										<p className="create_date">{moment(collapsible.createdAt).format('DD/MM/YYYY')}</p> 
 										<p className="create_count">{collapsible.daysCount} days</p> 
