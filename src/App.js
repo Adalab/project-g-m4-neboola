@@ -41,6 +41,7 @@ class App extends React.Component {
 		this.handleOption = this.handleOption.bind(this);
     this.removeRequest = this.removeRequest.bind(this);
     this.promptDelete = this.promptDelete.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
   
   componentDidMount(){
@@ -269,7 +270,13 @@ class App extends React.Component {
 		})
 		.then(response => response.json())
 		.then(data => this.getFetch())
-	}
+  }
+  updateState(){
+    this.setState({
+			errorNewRequest: false,
+      successNewRequest: false
+		});
+  }
 
   render() {
 		const {email, data, startDate, endDate, currentDay, 
@@ -336,6 +343,8 @@ class App extends React.Component {
 								handleOption={this.handleOption}
                 removeRequest={this.removeRequest}
                 promptDelete={this.promptDelete}
+                deleteLS={this.deleteLS}
+                updateState={this.updateState}
 							/>
 						);
 						}
