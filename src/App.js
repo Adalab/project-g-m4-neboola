@@ -248,9 +248,10 @@ class App extends React.Component {
 
 	handleOption(event) {
 		const newOption = event.currentTarget.id;
+		console.log(newOption);
 		this.setState({
 			option: newOption,
-      tabSelect: newOption
+			tabSelect: newOption
 		});
 	} 
 

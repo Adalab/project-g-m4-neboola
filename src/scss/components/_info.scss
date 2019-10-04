@@ -37,7 +37,6 @@
   width: 354px;
   height: 29px;
   color: $blue-dark;
-  // border: 0.5px solid $blue-dark;
   display: flex;
   justify-content: space-between;
 
@@ -90,7 +89,6 @@
 }
 
 .date_container{
-  // background-color: red;
   width: 144px;
 }
 
@@ -116,7 +114,6 @@
 
 
 .date{
-  // margin: 7px 16px 0px 19px;
   font-size: 18px;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.5);
@@ -149,7 +146,7 @@
 }
 
 .selected-option{
-  background-color: $blue-dark;
+  background-color: $blue-dark;	
   color:$color-light;
 }
 
