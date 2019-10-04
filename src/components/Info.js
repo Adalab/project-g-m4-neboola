@@ -9,7 +9,7 @@ import checkBlack from '../images/check-black.png';
 const Info = props => {
   
   const { requests, collapsibleId, handleCollapsible, currentDay, 
-         handleOption, option, promptDelete, tabSelect} = props;
+         handleOption, option, promptDelete, tabSelect, deleteLS} = props;
 				 
 	let filteredRequests = [];
 	let mappedRequests = [];
@@ -36,7 +36,7 @@ const Info = props => {
 	
 	return(
 		<React.Fragment>
-			<Header/>
+			<Header deleteLS={deleteLS}/>
 				<h2 className="info_title">request time</h2>
 				<ul className="options_list">
 					<li className={`option ${tabSelect === 'scheduled' ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>

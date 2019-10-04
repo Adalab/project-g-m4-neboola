@@ -337,6 +337,7 @@ class App extends React.Component {
 								handleOption={this.handleOption}
                 removeRequest={this.removeRequest}
                 promptDelete={this.promptDelete}
+                deleteLS={this.deleteLS}
 							/>
 						);
 						}
