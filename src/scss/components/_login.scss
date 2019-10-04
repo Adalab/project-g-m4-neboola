@@ -66,6 +66,9 @@ padding-top:40px;
   margin-top: 8px;
   color: $color-light;
   font-size: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   @media all and (min-width:768px) {
     width: 360px;
   }
