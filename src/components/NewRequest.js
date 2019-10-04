@@ -7,10 +7,10 @@ import SuccessRequest from './SuccessRequest';
 
 const NewRequest = props => {
    const {getDate, startDate, endDate, currentDay,comment,
-          handleCreateRequest, deleteLS,errorNewRequest,successNewRequest}=props
+          handleCreateRequest, deleteLS,errorNewRequest,successNewRequest,updateState}=props
 	return(
 		<React.Fragment>
-      <Header deleteLS={deleteLS}/>
+      <Header updateState={updateState} deleteLS={deleteLS}/>
       <h2 className="requests_time">Request free time</h2>
       <Date
       getDate={getDate}

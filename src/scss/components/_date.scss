@@ -7,6 +7,9 @@
   font-size: 10px;
   font-weight: bold;
   width: 120px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .dates_container {
   display: flex;
