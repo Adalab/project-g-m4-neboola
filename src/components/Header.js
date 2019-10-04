@@ -10,8 +10,8 @@ const Header = props => {
 		<>
       <div className="header">
         <Link to="/profile" className="link header_back-link">
-          <img src={leftArrow} alt="Go-back icon" className="header_icon-back prof_logout-icon"></img>
-          <h1 className="prof_title2 header_title">Neboola</h1>
+          <img src={leftArrow} alt="Go-back icon" className=""></img>
+          <h1 className="prof_title2 ">Neboola</h1>
         </Link>
         <Link to="/" className="link" onClick={deleteLS}>
           <img src={logout} alt="Logout icon" className="prof_logout-icon"></img>
