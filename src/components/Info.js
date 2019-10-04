@@ -11,7 +11,7 @@ import checkfull from '../images/checkfull.png';
 const Info = props => {
   
   const { requests, collapsibleId, handleCollapsible, currentDay, 
-         handleOption, option, promptDelete, tabSelect} = props;
+         handleOption, option, promptDelete, deleteLS,updateState} = props;
 				 
 	let filteredRequests = [];
 	let mappedRequests = [];
@@ -42,12 +42,12 @@ const Info = props => {
 	
 	return(
 		<React.Fragment>
-			<Header/>
+			<Header  updateState={updateState} deleteLS={deleteLS}/>
 				<h2 className="info_title">request time</h2>
 				<ul className="options_list">
-					<li className={`option ${tabSelect === 'scheduled' ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>
-					<li className={`option ${tabSelect === 'past' ? 'selected-option' : ''}`} id="past" onClick={handleOption}>past</li>
-					<li className={`option ${tabSelect === 'requested' ? 'selected-option' : ''}`} id="requested" onClick={handleOption}>requests</li>
+					<li className={`option ${option === "scheduled" ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>
+					<li className={`option ${option === "past" ? 'selected-option' : ''}`} id="past" onClick={handleOption}>past</li>
+					<li className={`option ${option === "requested" ? 'selected-option' : ''}`} id="requested" onClick={handleOption}>requests</li>
 				</ul>
 				<p>{`${countedDays} days ${option}`}</p>
 				<ul className="info_list">
