@@ -17,24 +17,28 @@ const Info = props => {
 	let mappedRequests = [];
 	let countedDays = 0;
 	let icon = undefined;
+	let subtitle = '';
 	switch(option){
 		case 'requested': 
 				filteredRequests = requests.filter(collapsible => collapsible.status !== 'approved');
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
 				icon = checkfull;
+				subtitle = 'Free time';
 				break;
 		case 'past':
 				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' &&  moment(collapsible.endDate).format('DD-MM-YYYY') <= currentDay);
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
 				icon = rewind;
+				subtitle = 'Free time';
 				break;
 		case 'scheduled':
 				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' && moment(collapsible.endDate).format('DD-MM-YYYY') >= currentDay);
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
 				icon = checkBlack;
+				subtitle = 'Requested time';
 				break;
 		default:
 				filteredRequests = requests;
@@ -43,7 +47,7 @@ const Info = props => {
 	return(
 		<React.Fragment>
 			<Header  updateState={updateState} deleteLS={deleteLS}/>
-				<h2 className="info_title">request time</h2>
+				<h2 className="info_title">{subtitle}</h2>
 				<ul className="options_list">
 					<li className={`option ${option === "scheduled" ? 'selected-option' : ''}`} id="scheduled" onClick={handleOption}>scheduled</li>
 					<li className={`option ${option === "past" ? 'selected-option' : ''}`} id="past" onClick={handleOption}>past</li>
