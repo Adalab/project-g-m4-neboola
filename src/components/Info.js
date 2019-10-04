@@ -9,7 +9,7 @@ import checkBlack from '../images/check-black.png';
 const Info = props => {
   
   const { requests, collapsibleId, handleCollapsible, currentDay, 
-         handleOption, option, promptDelete, tabSelect} = props;
+         handleOption, option, promptDelete} = props;
 				 
 	let filteredRequests = [];
 	let mappedRequests = [];

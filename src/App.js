@@ -24,8 +24,7 @@ class App extends React.Component {
       error: false,
       option: 'scheduled',
       errorNewRequest: false,
-      successNewRequest:false, 
-      tabSelect: 'scheduled'
+      successNewRequest:false 
 		}
 
 		this.getEmail = this.getEmail.bind(this);
@@ -250,8 +249,7 @@ class App extends React.Component {
 		const newOption = event.currentTarget.id;
 		console.log(newOption);
 		this.setState({
-			option: newOption,
-			tabSelect: newOption
+			option: newOption
 		});
 	} 
 
