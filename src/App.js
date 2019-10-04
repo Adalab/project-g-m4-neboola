@@ -182,6 +182,7 @@ class App extends React.Component {
         }
       })
       .then(response => response.json())
+			.then(data => this.getFetch())
       .then(data => {
         this.setState({
           startDate:'',
@@ -194,7 +195,6 @@ class App extends React.Component {
   getDate(event){
     const dateInput = event.currentTarget.value;
     const nameDateState =event.currentTarget.name;
-    //this.getCountDays();
     this.setState({
       [nameDateState]:dateInput,
       errorNewRequest: false,
