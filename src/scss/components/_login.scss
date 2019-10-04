@@ -66,17 +66,22 @@ padding-top:40px;
   margin-top: 8px;
   color: $color-light;
   font-size: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   @media all and (min-width:768px) {
     width: 360px;
   }
 }
 .message_error{
   display: block;
-  color: #e02020;
-  font-size: 13px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  color: #e02020; 
+  font-size: 12px;
   text-align: left;
   width: 308px;
   margin: 0 auto;
+  padding-left: 24px;
+  @media all and (min-width:768px) {
+    width: 360px;
+  }
 }
