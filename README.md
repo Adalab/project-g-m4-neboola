@@ -1,6 +1,6 @@
 ## Vacacioonero Web Application ##
 
-http://beta.adalab.es/g-m4-neboola/
+https://beta.adalab.es/g-m4-neboola/
 
 Vacacioonero is a Single Page Application (SPA) developed to help employees request their vacations and check the amount of free days available for them. It's organized in four screens:
 
