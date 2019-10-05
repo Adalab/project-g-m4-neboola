@@ -32,7 +32,7 @@
 .options_list{
   margin: 0px;
   padding: 0px;
- 
+
   list-style: none;
   width: 354px;
   height: 29px;
@@ -41,7 +41,10 @@
   justify-content: space-between;
 
 }
-
+.days-_count{
+  margin-left: 16px;
+  text-align: start;
+}
 .list_request{
   width: 118px;
   margin: 7.5px;
