@@ -18,7 +18,7 @@
   font-family: HelveticaNeue;
   font-size: 36px;
   font-weight: bold;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .info_collapsible{
@@ -32,7 +32,6 @@
 .options_list{
   margin: 0px;
   padding: 0px;
-
   list-style: none;
   width: 354px;
   height: 29px;
@@ -66,11 +65,14 @@
 .create_date{
   font-size: 10px;
   margin: 10px 10px 0 10px;
+  font-weight: 500;
+
 }
 
 .create_count{
   font-size: 18px;
   margin: 1px;
+  font-weight: normal;
 }
 
 .box_visible{
@@ -79,6 +81,8 @@
 
 .text{
   font-size: 13px;
+  font-weight: normal;
+
 }
 
 .text-from{
@@ -98,7 +102,7 @@
 .right-arrow{
   width: 16px;
   height: 16px;
-  margin: 35px 20px 13px 20px;
+  margin: 4px 20px 13px 20px;
   color: $color-dark;
   align-self: center;
 }
@@ -115,7 +119,6 @@
   font-size: 13px;
   margin: 16px 0 7px;
 }
-
 
 .date{
   font-size: 18px;
@@ -177,6 +180,13 @@
   text-transform: capitalize;
   background-color: white;
   border: none;
-  width: 320px;
+  margin-left: 16px;
   cursor: pointer;
+  position: relative;
+  top: 96px;
+  right: 380px;
+  height: 22px;
+}
+.boxes_date {
+  height: 130px;
 }
