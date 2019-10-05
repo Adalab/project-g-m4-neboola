@@ -27,7 +27,7 @@ const Info = props => {
 				subtitle = 'Free time';
 				break;
 		case 'past':
-				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' &&  moment(collapsible.endDate).format('DD-MM-YYYY') <= currentDay);
+				filteredRequests = requests.filter(collapsible => collapsible.status === 'approved' &&  moment(collapsible.endDate).format('DD-MM-YYYY') < currentDay);
 				mappedRequests = filteredRequests.map(collapsible => collapsible.daysCount);
 				countedDays = mappedRequests.reduce((acc, number) => acc + number, 0);
 				icon = rewind;
