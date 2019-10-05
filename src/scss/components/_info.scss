@@ -105,6 +105,10 @@
   margin: 4px 20px 13px 20px;
   color: $color-dark;
   align-self: center;
+  @media all and (max-width:527px) {
+    margin-top: 0px;
+    margin-bottom: 19px;
+  }
 }
 
 .create_date{
@@ -189,4 +193,7 @@
 }
 .boxes_date {
   height: 130px;
+  @media all and (max-width:527px) {
+    height: 140px;
+  }
 }
