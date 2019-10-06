@@ -323,6 +323,7 @@ class App extends React.Component {
                 deleteLS={this.deleteLS}
                 errorNewRequest={errorNewRequest}
                 successNewRequest={successNewRequest}
+                updateState={this.updateState}
 							/>
 						);
 						}
